@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0F0E20</color>
+    <color name="colorPrimaryDark">#020205</color>
+    <color name="colorAccent">#A700FF</color>
+
+    <!--background-->
+    <color name="colorWindowBackground">#0F0E20</color>
+    <color name="colorTintBackground">#FFFFFF</color>
+    <!--button-->
+    <color name="colorButtonPrimary">#7910FF</color>
+    <color name="colorButtonSecondary">#A700FF</color>
+    <!--text-->
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#909099</color>
+    <color name="colorTextSecondaryVariant">#E7892D</color>
+</resources>
