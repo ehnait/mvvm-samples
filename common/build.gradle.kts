@@ -23,7 +23,7 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     // COMMON
-    implementation(Libraries.logger)
+    api(Libraries.logger)
     implementation(Libraries.customactivityoncrash)
     implementation(Libraries.stetho)
     api(Libraries.stethoOkhttp)
