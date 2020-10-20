@@ -1,9 +1,18 @@
+import org.gradle.api.internal.tasks.compile.JavaCompilerArgumentsBuilder.LOGGER
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
     kotlin("android")
     kotlin("android.extensions")
+    id("com.mob.sdk")
 }
+MobSDK {
+    appKey(findProperty("MobSDK_Key").toString())
+    appSecret(findProperty("MobSDK_Secret").toString())
+    SMSSDK { }
+}
+
 android {
     compileSdkVersion(Versions.compileSdk)
     defaultConfig {
@@ -12,6 +21,7 @@ android {
         targetSdkVersion(Versions.targetSdk)
         versionCode = Releases.versionCode
         versionName = Releases.versionName
+        multiDexEnabled =true
     }
 
     buildTypes {
@@ -54,12 +64,15 @@ dependencies {
     implementation(AndroidLibraries.kotlinCoroutineAndroid)
     // ANDROID
     implementation(AndroidLibraries.appCompat)
+    implementation(AndroidLibraries.multidex)
     implementation(AndroidLibraries.coreKtx)
     implementation(AndroidLibraries.constraintLayout)
     implementation(AndroidLibraries.recyclerView)
     implementation(AndroidLibraries.material)
     //Libraries
     implementation(Libraries.coil)
+    implementation(Libraries.BaseRecyclerViewAdapterHelper)
+    implementation(Libraries.logger)
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))

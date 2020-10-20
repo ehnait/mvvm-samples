@@ -1,4 +1,4 @@
-package com.galaxy.common.logger
+package com.galaxy.graduationproject2011.logger
 
 import org.jetbrains.annotations.Nullable
 import timber.log.Timber
@@ -30,7 +30,7 @@ class ConstTagTree : Timber.DebugTree() {
         val element = callingElement()
         var newTag = if (mConstTag != null) mConstTag else getCallingClassName(element)
         newTag += ":" + element.lineNumber
-        super.log(priority, tag, message, t)
+        super.log(priority, newTag, message, t)
     }
 
     private fun callingElement(): StackTraceElement {

@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
+    id("kotlin-android")
 }
 android {
     compileSdkVersion(Versions.compileSdk)
@@ -22,12 +23,7 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    // COMMON
-    api(Libraries.logger)
-    implementation(Libraries.customactivityoncrash)
-    implementation(Libraries.stetho)
-    api(Libraries.stethoOkhttp)
-    implementation(Libraries.leakcanary)
+    implementation(AndroidLibraries.appCompat)
 }
 
 

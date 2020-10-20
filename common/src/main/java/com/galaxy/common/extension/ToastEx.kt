@@ -1,5 +1,6 @@
-package com.galaxy.common.extensions
+package com.galaxy.common.extension
 
+import android.content.Context
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -38,6 +39,17 @@ fun Fragment.showShortToast(
     toast.show()
 }
 
+fun Context.showShortToast(
+    message: String,
+    gravity: Int? = null,
+    xOffset: Int? = null,
+    yOffSet: Int? = null
+) {
+    val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+    gravity?.let { toast?.setGravity(it, xOffset ?: 0, yOffSet ?: 0) }
+    toast.show()
+}
+
 
 fun AppCompatActivity.showLongToast(
     message: String,
@@ -63,6 +75,17 @@ fun Fragment.showLongToast(
     yOffSet: Int? = null
 ) {
     val toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
+    gravity?.let { toast?.setGravity(it, xOffset ?: 0, yOffSet ?: 0) }
+    toast.show()
+}
+
+fun Context.showLongToast(
+    message: String,
+    gravity: Int? = null,
+    xOffset: Int? = null,
+    yOffSet: Int? = null
+) {
+    val toast = Toast.makeText(this, message, Toast.LENGTH_LONG)
     gravity?.let { toast?.setGravity(it, xOffset ?: 0, yOffSet ?: 0) }
     toast.show()
 }

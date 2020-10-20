@@ -1,4 +1,4 @@
-package com.galaxy.common.logger;
+package com.galaxy.graduationproject2011.logger;
 
 import androidx.annotation.NonNull;
 
@@ -16,10 +16,6 @@ public class MultiTagTree extends Timber.DebugTree {
     private static final String SEPARATOR = "-";
     private List<String> mTags = new CopyOnWriteArrayList<>();
 
-    @Override
-    protected String createStackElementTag(StackTraceElement element) {
-        return super.createStackElementTag(element) + ":" + element.getLineNumber();
-    }
 
     @Override
     protected void log(int priority, String tag, String message, Throwable t) {

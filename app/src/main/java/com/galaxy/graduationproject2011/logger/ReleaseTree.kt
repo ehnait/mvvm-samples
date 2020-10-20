@@ -1,4 +1,4 @@
-package com.galaxy.common.logger
+package com.galaxy.graduationproject2011.logger
 
 import android.util.Log
 import timber.log.Timber
