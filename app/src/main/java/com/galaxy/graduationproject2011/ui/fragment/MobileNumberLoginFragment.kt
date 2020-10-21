@@ -9,8 +9,7 @@ import com.galaxy.graduationproject2011.R
  *
  * Des:
  */
-class MobileNumberLoginFragment(override val layoutId: Int = R.layout.fragment_mobile_number_login) :
-    BaseFragment() {
+class MobileNumberLoginFragment : BaseFragment(R.layout.fragment_mobile_number_login) {
 
     override fun initView(view: View) {
 

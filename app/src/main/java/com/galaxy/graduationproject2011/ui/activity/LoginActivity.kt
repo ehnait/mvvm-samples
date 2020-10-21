@@ -13,7 +13,7 @@ import timber.log.Timber
  *
  * Des:
  */
-class LoginActivity(override val layoutId: Int = R.layout.activity_login) : BaseActivity() {
+class LoginActivity : BaseActivity(R.layout.activity_login) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MobSDK.submitPolicyGrantResult(

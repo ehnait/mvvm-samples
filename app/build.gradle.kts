@@ -76,4 +76,8 @@ dependencies {
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))
+//
+//    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.1")
 }
