@@ -1,10 +1,12 @@
 import org.gradle.api.internal.tasks.compile.JavaCompilerArgumentsBuilder.LOGGER
 
+//apply(from = "../ktlint.gradle.kts")
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    kotlin("android")
-    kotlin("android.extensions")
+    id("kotlin-android-extensions")
+    id("kotlin-kapt")
+    id("androidx.navigation.safeargs.kotlin")
     id("com.mob.sdk")
 }
 MobSDK {
@@ -21,7 +23,7 @@ android {
         targetSdkVersion(Versions.targetSdk)
         versionCode = Releases.versionCode
         versionName = Releases.versionName
-        multiDexEnabled =true
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -68,16 +70,17 @@ dependencies {
     implementation(AndroidLibraries.coreKtx)
     implementation(AndroidLibraries.constraintLayout)
     implementation(AndroidLibraries.recyclerView)
+    implementation(AndroidLibraries.navigationFragment_ktx)
+    implementation(AndroidLibraries.navigationUi_ktx)
     implementation(AndroidLibraries.material)
     //Libraries
     implementation(Libraries.coil)
+    implementation(Libraries.lottie)
     implementation(Libraries.BaseRecyclerViewAdapterHelper)
     implementation(Libraries.logger)
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))
-//
+
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.3.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.3.1")
 }

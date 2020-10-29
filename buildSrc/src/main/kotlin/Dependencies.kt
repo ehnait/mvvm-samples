@@ -33,7 +33,9 @@ object Versions {
     const val coreKtx = "1.3.1"
     const val constraintLayout = "2.0.1"
     const val recyclerview = "1.0.0"
+    const val navigation = "2.3.1"
     const val material = "1.2.0"
+
 
     const val room = "2.1.0-alpha06"
     const val retrofit = "2.9.0"
@@ -42,6 +44,7 @@ object Versions {
     const val gson = "2.8.5"
     const val okHttp = "3.12.1"
     const val coil = "1.0.0-rc3"
+    const val lottie = "3.4.4"
     const val BaseRecyclerViewAdapterHelper = "3.0.6"
     const val logger = "4.7.1"
 
@@ -62,7 +65,7 @@ object Libraries {
 
     // COIL https://github.com/coil-kt/coil
     const val coil = "io.coil-kt:coil:${Versions.coil}"
-
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     const val BaseRecyclerViewAdapterHelper =
         "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.BaseRecyclerViewAdapterHelper}"
 
@@ -88,6 +91,8 @@ object AndroidLibraries {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    const val navigationFragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    const val navigationUi_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val material = "com.google.android.material:material:${Versions.material}"
 }
 

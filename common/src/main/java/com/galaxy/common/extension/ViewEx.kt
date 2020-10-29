@@ -43,6 +43,18 @@ fun <T : View> T.singleClick(onClickListener: View.OnClickListener, time: Long =
 }
 
 
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
 var View.scale: Float
     get() = Math.min(scaleX, scaleY)
     set(value) {
@@ -75,6 +87,7 @@ fun TextView.leftIcon(drawableId: Int) {
         null
     )
 }
+
 fun TextView.rightIcon(drawableId: Int) {
     setCompoundDrawablesWithIntrinsicBounds(
         null,

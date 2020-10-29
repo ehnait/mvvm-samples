@@ -2,16 +2,22 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#D1FF45</color>
+    <color name="colorAccent">#3F51B5</color>
+    <color name="colorAccentTransparent">#CC3F51B5</color>
 
     <!--background-->
     <color name="colorWindowBackground">#FFFFFF</color>
     <color name="colorTintBackground">#000000</color>
     <!--button-->
     <color name="colorButtonPrimary">#45C139</color>
+    <color name="colorButtonPrimaryTransparent">#CC45C139</color>
     <color name="colorButtonSecondary">#D1FF45</color>
+    <color name="colorButtonSecondaryTransparent">#CCD1FF45</color>
+    <color name="colorButtonInvalid">#E6C1C1C1</color>
+
     <!--text-->
     <color name="colorTextPrimary">#000000</color>
     <color name="colorTextSecondary">#838485</color>
-    <color name="colorTextSecondaryVariant">#1D47F7</color>
+    <color name="colorTextSecondaryVariant">#9C27B0</color>
+    <color name="colorTextSecondaryVariantTransparent">#CC9C27B0</color>
 </resources>

@@ -10,6 +10,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:4.0.1")
         classpath(kotlin("gradle-plugin", version = Versions.kotlin))
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}")
         // MobSDK
         classpath("com.mob.sdk:MobSDK:+")
 

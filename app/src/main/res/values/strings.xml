@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">graduationProject2011</string>
     <string name="login_with_otp">Login With OTP</string>
+    <string name="login_to_n_graduation_project">Login to \n Graduation Project</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_your_phone_otp">Enter your phone OTP</string>
+    <string name="verify">Verify</string>
+    <string name="china">China</string>
+    <string name="_86">+86</string>
+    <string name="get">get</string>
+    <string name="reget">Reget</string>n
+    <string name="the_network_is_abnormal_please_try_again_later">The network is abnormal, please try again later</string>
+    <string name="the_network_not_connected">The network not connected</string>
+    <string name="please_enter_the_correct_phone_number">Please enter the correct phone number</string>
+    <string name="can_t_receive_otp_try_audio_verify">Can\'t receive OTP? Try Audio verify.</string>
 </resources>
