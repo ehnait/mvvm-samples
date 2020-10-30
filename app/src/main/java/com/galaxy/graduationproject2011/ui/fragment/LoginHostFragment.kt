@@ -15,8 +15,10 @@ import kotlinx.android.synthetic.main.fragment_login_host.*
 class LoginHostFragment : BaseFragment(R.layout.fragment_login_host) {
 
     override fun initView(view: View) {
+
         btnLogin.singleClick {
-            it.findNavController().navigate(R.id.action_loginHostFragment_to_loginMobileNumberFragment)
+            it.findNavController()
+                .navigate(R.id.action_loginHostFragment_to_loginMobileNumberFragment)
         }
     }
 

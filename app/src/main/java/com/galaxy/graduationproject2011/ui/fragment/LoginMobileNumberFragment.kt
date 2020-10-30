@@ -11,8 +11,10 @@ import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
 import com.galaxy.common.extension.visible
+import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
+import com.galaxy.graduationproject2011.data.Constant
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -26,6 +28,7 @@ import timber.log.Timber
  * Des:
  */
 class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_number) {
+    var userName by PreferenceUtils(Constant.SP_UserId, "")
     private lateinit var eventhandler: EventHandler
     private lateinit var countDownTimer: CountDownTimer
 
@@ -107,6 +110,8 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                             }
                         }
                         EVENT_SUBMIT_VERIFICATION_CODE -> {//提交验证码成功
+                            val phoneNumber = etPhone.text.toString().trim()
+                            userName = phoneNumber
                             findNavController().navigate(R.id.action_loginMobileNumberFragment_to_homeFragment)
                         }
                     }
@@ -137,7 +142,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
 
 
     override fun onDestroy() {
-        SMSSDK.unregisterEventHandler(eventhandler)
+        unregisterEventHandler(eventhandler)
         countDownTimer.cancel()
         super.onDestroy()
     }

@@ -11,9 +11,6 @@ android {
         targetSdkVersion(Versions.targetSdk)
     }
     buildTypes {
-        getByName("debug") {
-
-        }
         // Apply fake signing config to release to test "assembleRelease" locally
         getByName("release") {
             isMinifyEnabled = true

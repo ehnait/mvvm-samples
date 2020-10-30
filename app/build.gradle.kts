@@ -29,24 +29,26 @@ android {
     buildTypes {
         getByName("debug") {
             applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("debug")
         }
-
-        // Apply fake signing config to release to test "assembleRelease" locally
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
-//            proguardFile(file("../config/proguard/proguard-rules.txt"))
-//            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
     signingConfigs {
         getByName("debug") {
-//            storeFile = file("../config/signing/debug.keystore")
-//            storePassword = signing.pass
-//            keyAlias = signing.alias
-//            keyPassword = signing.pass
+            storeFile = file("../debug.keystore")
+//            storePassword = findProperty("KeyStorePass").toString()
+//            keyAlias = findProperty("KeyStoreAlias").toString()
+//            keyPassword = findProperty("KeyStorePass").toString()
+
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
         }
     }
     compileOptions {
@@ -81,6 +83,9 @@ dependencies {
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))
+
+    // optional - Test helpers
+    testImplementation ("androidx.room:room-testing:2.2.5")
 
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 }

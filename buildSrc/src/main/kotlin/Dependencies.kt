@@ -14,11 +14,6 @@ object Releases {
     const val versionName = "1.0"
 }
 
-object Signing {
-    const val alias = "androiddebugkey"
-    const val pass = "android"
-}
-
 object Versions {
     const val compileSdk = 30
     const val minSdk = 19
@@ -36,8 +31,6 @@ object Versions {
     const val navigation = "2.3.1"
     const val material = "1.2.0"
 
-
-    const val room = "2.1.0-alpha06"
     const val retrofit = "2.9.0"
     const val retrofitCoroutines = "0.9.2"
     const val retrofitGson = "2.9.0"
@@ -51,11 +44,6 @@ object Versions {
 }
 
 object Libraries {
-    // ROOM
-    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
-    const val roomRunTime = "androidx.room:room-runtime:${Versions.room}"
-    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-
     // RETROFIT
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
@@ -91,8 +79,11 @@ object AndroidLibraries {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
-    const val navigationFragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+    //NAVIGATION
+    const val navigationFragment_ktx =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUi_ktx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+
     const val material = "com.google.android.material:material:${Versions.material}"
 }
 
