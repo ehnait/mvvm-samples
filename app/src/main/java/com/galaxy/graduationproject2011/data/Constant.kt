@@ -6,6 +6,9 @@ package com.galaxy.graduationproject2011.data
  * Des:
  */
 object Constant {
-    const val SP_UserId = "SP_UserId"
+
+    const val SP_UserName = "SP_UserName"
+    const val SP_PassWord = "SP_PassWord"
+
 
 }

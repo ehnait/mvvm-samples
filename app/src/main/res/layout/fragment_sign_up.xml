@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWindowBackground"
-    tools:context=".ui.fragment.LoginMobileNumberFragment">
+    tools:context=".ui.fragment.LoginSignUpFragment">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -22,35 +22,24 @@
             android:id="@+id/animation_view"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/phone" />
+            app:lottie_rawRes="@raw/pulsating_circle" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="32dp">
 
-            <TextView
-                android:id="@+id/tvCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/_86"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
             <EditText
-                android:id="@+id/etPhone"
+                android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/tvCountry"
                 android:background="@null"
-                android:hint="@string/enter_your_phone_number"
-                android:inputType="phone"
+                android:hint="@string/enter_your_username"
+                android:inputType="text"
                 android:maxLength="11"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -73,15 +62,14 @@
             android:layout_marginTop="32dp">
 
             <EditText
-                android:id="@+id/etCode"
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/tvSend"
                 android:background="@null"
-                android:hint="@string/enter_your_phone_otp"
-                android:inputType="number"
-                android:maxLength="6"
+                android:hint="@string/enter_your_password"
+                android:inputType="textPassword"
+                android:maxLength="8"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:singleLine="true"
@@ -89,19 +77,6 @@
                 android:textColorHint="@color/colorTextSecondary"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/tvSend"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/get"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -110,18 +85,36 @@
                 android:background="@drawable/shape_line_bg" />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvAudio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="12dp"
-            android:paddingTop="10dp"
-            android:text="@string/can_t_receive_otp_try_audio_verify"
-            android:textColor="@drawable/selector_button_secondary_variant_bg"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            tools:visibility="visible" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="32dp">
+
+            <EditText
+                android:id="@+id/etPasswordAgain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:hint="@string/enter_your_password_again"
+                android:inputType="textPassword"
+                android:maxLength="8"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:textColor="@color/colorTextPrimary"
+                android:textColorHint="@color/colorTextSecondary"
+                android:textSize="16sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/shape_line_bg" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 
@@ -136,7 +129,7 @@
         android:layout_marginBottom="56dp"
         android:background="@drawable/selector_button_primary_bg"
         android:enabled="false"
-        android:text="@string/verify"
+        android:text="@string/submit"
         android:textAllCaps="false"
         android:textColor="@color/colorTextPrimary"
         android:textStyle="bold" />

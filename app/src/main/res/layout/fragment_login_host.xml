@@ -12,26 +12,45 @@
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnLogin"
+        android:layout_above="@+id/llButtonContainer"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/city" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+    <LinearLayout
+        android:id="@+id/llButtonContainer"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/llOtherLogin"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/selector_button_primary_bg"
-        android:text="@string/login_with_otp"
-        android:textColor="@color/colorTextPrimary"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginWithOTP"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_button_primary_bg"
+            android:text="@string/login_with_otp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextPrimary"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginWithPassWord"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/selector_button_primary_bg"
+            android:text="@string/login_with_password"
+            android:textAllCaps="false"
+            android:textColor="@color/colorTextPrimary"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llOtherLogin"

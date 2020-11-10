@@ -28,16 +28,18 @@ import timber.log.Timber
  * Des:
  */
 class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_number) {
-    var userName by PreferenceUtils(Constant.SP_UserId, "")
+    var userName by PreferenceUtils(Constant.SP_UserName, "")
     private lateinit var eventhandler: EventHandler
     private lateinit var countDownTimer: CountDownTimer
 
     override fun initView(view: View) {
         val activity = requireActivity() as MainActivity
+        tvTitle.text =getString(R.string.log_in)
+
         initCountDown()
         initSMSSDK()
         ivBack.singleClick {
-            findNavController().popBackStack()
+            findNavController().navigateUp()
         }
         tvSend.singleClick {
             if (!activity.isNetworkConnected()) {
@@ -112,7 +114,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                         EVENT_SUBMIT_VERIFICATION_CODE -> {//提交验证码成功
                             val phoneNumber = etPhone.text.toString().trim()
                             userName = phoneNumber
-                            findNavController().navigate(R.id.action_loginMobileNumberFragment_to_homeFragment)
+                            findNavController().navigate(R.id.action_global_homeFragment)
                         }
                     }
                 } else {

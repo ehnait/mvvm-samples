@@ -5,6 +5,13 @@
     android:id="@+id/home_nav_graph"
     app:startDestination="@+id/splashFragment">
 
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/home_nav_graph"
+        app:popUpToInclusive="true"
+        app:launchSingleTop="true" />
+
     <include app:graph="@navigation/login_nav_graph" />
 
     <fragment
@@ -22,7 +29,6 @@
             app:destination="@+id/homeFragment"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
-
     </fragment>
 
     <fragment
@@ -32,6 +38,8 @@
         tools:layout="@layout/fragment_home">
 
     </fragment>
+
+
 
 
 </navigation>

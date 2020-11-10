@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
-import com.galaxy.graduationproject2011.data.Constant.SP_UserId
+import com.galaxy.graduationproject2011.data.Constant
 
 /**
  * Created by Liam.Zheng on 2020/10/28
@@ -14,7 +14,7 @@ import com.galaxy.graduationproject2011.data.Constant.SP_UserId
  */
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
-    var userName by PreferenceUtils(SP_UserId, "")
+    var userName by PreferenceUtils(Constant.SP_UserName, "")
 
     override fun initView(view: View) {
         if (userName.isEmpty()) {

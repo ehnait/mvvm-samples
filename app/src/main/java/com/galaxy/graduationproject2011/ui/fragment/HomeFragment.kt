@@ -7,6 +7,7 @@ import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
 import com.galaxy.graduationproject2011.R
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.json.JSONObject
 
 /**
@@ -17,6 +18,7 @@ import org.json.JSONObject
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     override fun initView(view: View) {
+
         text.singleClick {
 //            findNavController().navigate(R.id.action_pop_out_of_home)
 //

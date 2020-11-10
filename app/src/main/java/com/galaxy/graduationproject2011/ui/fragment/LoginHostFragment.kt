@@ -2,6 +2,7 @@ package com.galaxy.graduationproject2011.ui.fragment
 
 import android.view.View
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.singleClick
 import com.galaxy.graduationproject2011.R
@@ -16,9 +17,11 @@ class LoginHostFragment : BaseFragment(R.layout.fragment_login_host) {
 
     override fun initView(view: View) {
 
-        btnLogin.singleClick {
-            it.findNavController()
-                .navigate(R.id.action_loginHostFragment_to_loginMobileNumberFragment)
+        btnLoginWithOTP.singleClick {
+            findNavController().navigate(R.id.action_loginHostFragment_to_loginMobileNumberFragment)
+        }
+        btnLoginWithPassWord.singleClick {
+            findNavController().navigate(R.id.action_loginHostFragment_to_loginPassWordFragment)
         }
     }
 

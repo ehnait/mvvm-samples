@@ -37,7 +37,7 @@ object Versions {
     const val gson = "2.8.5"
     const val okHttp = "3.12.1"
     const val coil = "1.0.0-rc3"
-    const val lottie = "3.4.4"
+    const val lottie = "3.5.0"
     const val BaseRecyclerViewAdapterHelper = "3.0.6"
     const val logger = "4.7.1"
 
