@@ -10,11 +10,13 @@ import cn.smssdk.SMSSDK.*
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
+import com.galaxy.common.extension.start
 import com.galaxy.common.extension.visible
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.data.Constant
+import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -33,8 +35,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
     private lateinit var countDownTimer: CountDownTimer
 
     override fun initView(view: View) {
-        val activity = requireActivity() as MainActivity
-        tvTitle.text =getString(R.string.log_in)
+        tvTitle.text = getString(R.string.log_in)
 
         initCountDown()
         initSMSSDK()
@@ -42,7 +43,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             findNavController().navigateUp()
         }
         tvSend.singleClick {
-            if (!activity.isNetworkConnected()) {
+            if (!(requireActivity() as AppBaseActivity).isNetworkConnected()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -54,7 +55,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             }
         }
         tvAudio.singleClick {
-            if (!activity.isNetworkConnected()) {
+            if (!(requireActivity() as AppBaseActivity).isNetworkConnected()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -66,7 +67,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             }
         }
         btnVerify.singleClick {
-            if (!activity.isNetworkConnected()) {
+            if (!(requireActivity() as MainActivity).isNetworkConnected()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -114,7 +115,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                         EVENT_SUBMIT_VERIFICATION_CODE -> {//提交验证码成功
                             val phoneNumber = etPhone.text.toString().trim()
                             userName = phoneNumber
-                            findNavController().navigate(R.id.action_global_homeFragment)
+                            requireActivity().start<MainActivity>()
                         }
                     }
                 } else {

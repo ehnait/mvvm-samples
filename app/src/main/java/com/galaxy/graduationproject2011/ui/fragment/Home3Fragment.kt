@@ -9,7 +9,7 @@ import com.galaxy.graduationproject2011.R
  *
  * Des:
  */
-class HomeFragment : BaseFragment(R.layout.fragment_home) {
+class Home3Fragment : BaseFragment(R.layout.fragment_home3) {
 
     override fun initView(view: View) {
 
@@ -17,6 +17,6 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     companion object {
         @JvmStatic
-        fun newInstance() = HomeFragment()
+        fun newInstance() = Home3Fragment()
     }
 }

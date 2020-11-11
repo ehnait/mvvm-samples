@@ -1,7 +1,6 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
 import android.view.View
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.singleClick

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="1" />
+
+    <item
+        android:id="@+id/homeFragment2"
+        android:icon="@android:drawable/ic_dialog_alert"
+        android:title="2" />
+
+    <item
+        android:id="@+id/homeFragment3"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="3" />
+
+</menu>

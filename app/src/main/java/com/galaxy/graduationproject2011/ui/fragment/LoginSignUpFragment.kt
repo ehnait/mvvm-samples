@@ -10,6 +10,7 @@ import com.galaxy.common.extension.singleClick
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.data.Constant
+import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
 import kotlinx.android.synthetic.main.fragment_login_password.*
@@ -29,7 +30,6 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
     private var passWordSP by PreferenceUtils(Constant.SP_PassWord, "")
 
     override fun initView(view: View) {
-        val activity = requireActivity() as MainActivity
         tvTitle.text = getString(R.string.sign_up)
 
         ivBack.singleClick {
@@ -37,7 +37,7 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         }
 
         btnVerify.singleClick {
-            if (!activity.isNetworkConnected()) {
+            if (! (requireActivity() as AppBaseActivity).isNetworkConnected()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
