@@ -1,7 +1,6 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
 import android.view.View
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
@@ -11,9 +10,7 @@ import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.data.Constant
 import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
-import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
-import kotlinx.android.synthetic.main.fragment_login_password.*
 import kotlinx.android.synthetic.main.fragment_login_password.etPassword
 import kotlinx.android.synthetic.main.fragment_login_password.etUsername
 import kotlinx.android.synthetic.main.fragment_sign_up.*
@@ -37,7 +34,7 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         }
 
         btnVerify.singleClick {
-            if (! (requireActivity() as AppBaseActivity).isNetworkConnected()) {
+            if (! (requireActivity() as AppBaseActivity).isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }

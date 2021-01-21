@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
+        android:contentDescription="cd_home"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="1" />
 
     <item
-        android:id="@+id/homeFragment2"
+        android:id="@+id/list"
+        android:contentDescription="cd_list"
         android:icon="@android:drawable/ic_dialog_alert"
         android:title="2" />
 
     <item
-        android:id="@+id/homeFragment3"
+        android:id="@+id/form"
+        android:contentDescription="cd_form"
         android:icon="@android:drawable/ic_dialog_email"
         android:title="3" />
 
 </menu>
+

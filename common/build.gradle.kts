@@ -2,7 +2,6 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
-    id("kotlin-android")
 }
 android {
     compileSdkVersion(Versions.compileSdk)
@@ -20,7 +19,10 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(AndroidLibraries.appCompat)
+    api(AndroidLibraries.appCompat)
+    api(AndroidLibraries.lifecycleRuntime)
+    api(AndroidLibraries.lifecycleLiveData)
+    api(AndroidLibraries.lifecycleViewModel)
 }
 
 

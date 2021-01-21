@@ -1,5 +1,3 @@
-import org.gradle.api.internal.tasks.compile.JavaCompilerArgumentsBuilder.LOGGER
-
 //apply(from = "../ktlint.gradle.kts")
 plugins {
     id("com.android.application")
@@ -24,6 +22,7 @@ android {
         versionCode = Releases.versionCode
         versionName = Releases.versionName
         multiDexEnabled = true
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -62,30 +61,34 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    // Test
+    testImplementation("junit:junit:4.12")
+    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
     // KOTLIN
     implementation(KotlinLibraries.kotlin)
+    implementation(KotlinLibraries.coreKtx)
     implementation(KotlinLibraries.kotlinCoroutineCore)
-    implementation(AndroidLibraries.kotlinCoroutineAndroid)
+    implementation(KotlinLibraries.kotlinCoroutineAndroid)
     // ANDROID
     implementation(AndroidLibraries.appCompat)
+    implementation(AndroidLibraries.lifecycleRuntime)
+    implementation(AndroidLibraries.lifecycleLiveData)
+    implementation(AndroidLibraries.lifecycleViewModel)
     implementation(AndroidLibraries.multidex)
-    implementation(AndroidLibraries.coreKtx)
     implementation(AndroidLibraries.constraintLayout)
     implementation(AndroidLibraries.recyclerView)
     implementation(AndroidLibraries.navigationFragment_ktx)
     implementation(AndroidLibraries.navigationUi_ktx)
     implementation(AndroidLibraries.material)
     //Libraries
-    implementation(Libraries.coil)
-    implementation(Libraries.lottie)
-    implementation(Libraries.BaseRecyclerViewAdapterHelper)
-    implementation(Libraries.logger)
+    implementation(OtherLibraries.coil)
+    implementation(OtherLibraries.lottie)
+    implementation(OtherLibraries.BaseRecyclerViewAdapterHelper)
+    implementation(OtherLibraries.logger)
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))
-
-    // optional - Test helpers
-    testImplementation ("androidx.room:room-testing:2.2.5")
 
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 }

@@ -43,7 +43,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             findNavController().navigateUp()
         }
         tvSend.singleClick {
-            if (!(requireActivity() as AppBaseActivity).isNetworkConnected()) {
+            if (!(requireActivity() as AppBaseActivity).isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -55,7 +55,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             }
         }
         tvAudio.singleClick {
-            if (!(requireActivity() as AppBaseActivity).isNetworkConnected()) {
+            if (!(requireActivity() as AppBaseActivity).isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -67,7 +67,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             }
         }
         btnVerify.singleClick {
-            if (!(requireActivity() as MainActivity).isNetworkConnected()) {
+            if (!(requireActivity() as MainActivity).isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }

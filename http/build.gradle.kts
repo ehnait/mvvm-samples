@@ -30,10 +30,13 @@ android {
 }
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    api(Libraries.retrofit)
-    api(Libraries.retrofitGsonConverter)
-    api(Libraries.httpLoggingInterceptor)
-    api(AndroidLibraries.kotlinCoroutineAndroid)
-
-
+    // KOTLIN
+    api(KotlinLibraries.kotlin)
+    api(KotlinLibraries.coreKtx)
+    api(KotlinLibraries.kotlinCoroutineCore)
+    api(KotlinLibraries.kotlinCoroutineAndroid)
+    // Http
+    api(OtherLibraries.retrofit)
+    api(OtherLibraries.retrofitGsonConverter)
+    api(OtherLibraries.httpLoggingInterceptor)
 }

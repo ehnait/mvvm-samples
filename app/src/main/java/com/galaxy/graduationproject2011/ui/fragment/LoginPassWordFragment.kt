@@ -37,7 +37,7 @@ class LoginPassWordFragment : BaseFragment(R.layout.fragment_login_password) {
             findNavController().navigate(R.id.action_loginPassWordFragment_to_loginSignUpFragment)
         }
         btnVerify.singleClick {
-            if (!(requireActivity() as AppBaseActivity).isNetworkConnected()) {
+            if (!(requireActivity() as AppBaseActivity).isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }

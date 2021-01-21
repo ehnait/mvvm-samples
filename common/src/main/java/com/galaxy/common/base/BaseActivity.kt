@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 
-abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity(contentLayoutId) {
-    protected abstract fun initView()
+abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity() {
+    protected abstract fun initView(savedInstanceState: Bundle?)
+    private val layoutResID = contentLayoutId
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initView()
+        setContentView(layoutResID)
+        initView(savedInstanceState)
     }
 }

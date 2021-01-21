@@ -1,5 +1,6 @@
 package com.galaxy.graduationproject2011.ui.activity
 
+import android.os.Bundle
 import com.galaxy.graduationproject2011.R
 
 /**
@@ -8,7 +9,11 @@ import com.galaxy.graduationproject2011.R
  * Des:
  */
 class LoginActivity : AppBaseActivity(R.layout.activity_login) {
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
+        if (isInternetOn()) {
 
+        } else {
+
+        }
     }
 }
