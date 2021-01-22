@@ -34,11 +34,10 @@ object Versions {
 
     const val retrofitVersion = "2.9.0"
     const val gsonVersion = "2.8.5"
-    const val okHttpVersion = "3.12.1"
+    const val okHttpVersion = "3.14.9"
     const val coilVersion = "1.0.0-rc3"
     const val lottieVersion = "3.5.0"
     const val BaseRecyclerViewAdapterHelperVersion = "3.0.6"
-    const val loggerVersion = "4.7.1"
 
 }
 
@@ -98,7 +97,4 @@ object OtherLibraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
     const val BaseRecyclerViewAdapterHelper =
         "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.BaseRecyclerViewAdapterHelperVersion}"
-
-    //Logger https://github.com/JakeWharton/timber
-    const val logger = "com.jakewharton.timber:timber:${Versions.loggerVersion}"
 }

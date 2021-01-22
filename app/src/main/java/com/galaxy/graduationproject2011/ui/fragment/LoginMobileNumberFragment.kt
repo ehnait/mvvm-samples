@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import timber.log.Timber
 
 
 /**
@@ -166,7 +165,6 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                 return
             }
         } catch (e: Exception) {
-            Timber.wtf(e)
         }
         showShortToast(getString(R.string.the_network_is_abnormal_please_try_again_later))
     }

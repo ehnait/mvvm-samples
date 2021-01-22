@@ -23,7 +23,8 @@ object Service {
                     .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                     .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                     .addNetworkInterceptor(
-                        HttpLoggingInterceptor().setLevel(if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+                        HttpLoggingInterceptor()
+                            .setLevel(if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
                     )
                     .addInterceptor(HeaderInterceptor(debug = DEBUG).apply {
                         val headersMap = HashMap<String, String>(3)

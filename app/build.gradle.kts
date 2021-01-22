@@ -85,7 +85,6 @@ dependencies {
     implementation(OtherLibraries.coil)
     implementation(OtherLibraries.lottie)
     implementation(OtherLibraries.BaseRecyclerViewAdapterHelper)
-    implementation(OtherLibraries.logger)
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))

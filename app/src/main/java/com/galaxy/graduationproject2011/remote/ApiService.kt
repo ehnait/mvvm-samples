@@ -1,9 +1,9 @@
 package com.galaxy.graduationproject2011.remote
 
-import com.galaxy.graduationproject2011.entity.BaseResponse
 import com.galaxy.graduationproject2011.entity.RandPortraitResponse
 import com.galaxy.graduationproject2011.entity.RandPwdResponse
-import retrofit2.http.*
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("api/rand.pwd.php")
