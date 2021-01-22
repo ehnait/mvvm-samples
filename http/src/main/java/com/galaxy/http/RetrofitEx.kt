@@ -10,10 +10,12 @@ import retrofit2.Retrofit
  * Des:
  */
 
-fun <Response> CoroutineScope.request(callBlock: suspend () -> Response,
-                                      onSuccess: ((Response) -> Unit)? = null,
-                                      onThrowable: ((Throwable) -> Unit)? = null,
-                                      onFinally: (() -> Unit)? = null) {
+fun <Response> CoroutineScope.request(
+    callBlock: suspend () -> Response,
+    onSuccess: ((Response) -> Unit)? = null,
+    onThrowable: ((Throwable) -> Unit)? = null,
+    onFinally: (() -> Unit)? = null
+) {
     val handler = CoroutineExceptionHandler { _, exception ->
         onThrowable?.invoke(exception)
     }
@@ -30,18 +32,18 @@ fun <Response> CoroutineScope.request(callBlock: suspend () -> Response,
     }
 }
 
-inline fun <Service> apiService(
-        service: Class<Service>,
-        configuration: (Configuration.() -> Unit)
+inline fun <Service> Any.apiService(
+    service: Class<Service>,
+    configuration: (Configuration.() -> Unit)
 ): Service {
     val finalConfiguration = Configuration().apply(configuration)
 
     val finalOkHttpBuilder = finalConfiguration.buidOkHttp?.invoke(OkHttpClient.Builder())
-            ?: OkHttpClient.Builder()
+        ?: OkHttpClient.Builder()
 
     val finalRetrofitBuilder = finalConfiguration.buidRetrofit?.invoke(Retrofit.Builder())
-            ?: Retrofit.Builder()
-                    .client(finalOkHttpBuilder.build())
+        ?: Retrofit.Builder()
+            .client(finalOkHttpBuilder.build())
 
     return finalRetrofitBuilder.build().create(service)
 }

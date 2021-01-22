@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
-import com.galaxy.graduationproject2011.data.Constant
+import com.galaxy.graduationproject2011.entity.Constant
 
 /**
  * Created by Liam.Zheng on 2020/10/16

@@ -15,7 +15,7 @@ import com.galaxy.common.extension.visible
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
-import com.galaxy.graduationproject2011.data.Constant
+import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
