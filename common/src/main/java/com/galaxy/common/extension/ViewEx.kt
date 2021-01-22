@@ -71,8 +71,8 @@ fun View.addBottomMargin(@Px marginInPx: Int) {
 }
 
 
-infix fun ViewGroup.inflate(layoutResId: Int): View =
-    LayoutInflater.from(context).inflate(layoutResId, this, false)
+fun ViewGroup.inflate(layoutResId: Int): View =
+        LayoutInflater.from(context).inflate(layoutResId, this, false)
 
 
 fun ImageView.tint(colorId: Int) {
@@ -81,18 +81,18 @@ fun ImageView.tint(colorId: Int) {
 
 fun TextView.leftIcon(drawableId: Int) {
     setCompoundDrawablesWithIntrinsicBounds(
-        ContextCompat.getDrawable(context, drawableId),
-        null,
-        null,
-        null
+            ContextCompat.getDrawable(context, drawableId),
+            null,
+            null,
+            null
     )
 }
 
 fun TextView.rightIcon(drawableId: Int) {
     setCompoundDrawablesWithIntrinsicBounds(
-        null,
-        null,
-        ContextCompat.getDrawable(context, drawableId),
-        null
+            null,
+            null,
+            ContextCompat.getDrawable(context, drawableId),
+            null
     )
 }

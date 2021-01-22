@@ -3,6 +3,7 @@ package com.galaxy.graduationproject2011.ui.fragment
 import android.os.CountDownTimer
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
@@ -10,16 +11,19 @@ import cn.smssdk.SMSSDK.*
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
-import com.galaxy.common.extension.start
 import com.galaxy.common.extension.visible
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
+import com.galaxy.graduationproject2011.remote.Service
 import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
+import com.galaxy.http.apiService
+import com.galaxy.http.request
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import timber.log.Timber
 
@@ -36,7 +40,19 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
 
     override fun initView(view: View) {
         tvTitle.text = getString(R.string.log_in)
+        lifecycleScope.launch {
+            request({
+                Service.apiService.getRandPwd()
+            }, {
+                if (it.isOk()) {
+                    showShortToast(it.password)
+                } else {
+                    showShortToast(it.code.toString())
+                }
+            }, {
 
+            })
+        }
         initCountDown()
         initSMSSDK()
         ivBack.singleClick {
@@ -115,7 +131,19 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                         EVENT_SUBMIT_VERIFICATION_CODE -> {//提交验证码成功
                             val phoneNumber = etPhone.text.toString().trim()
                             userName = phoneNumber
-                            requireActivity().start<MainActivity>()
+                            lifecycleScope.launch {
+                                request({
+                                    Service.apiService.getRandPwd()
+                                }, {
+                                    if (it.isOk()) {
+                                        showShortToast(it.password)
+                                    } else {
+                                        showShortToast(it.code.toString())
+                                    }
+                                }, {
+
+                                })
+                            }
                         }
                     }
                 } else {

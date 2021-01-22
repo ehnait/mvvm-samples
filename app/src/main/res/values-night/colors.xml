@@ -13,8 +13,12 @@
     <color name="colorButtonPrimaryTransparent">#CC7910FF</color>
     <color name="colorButtonSecondary">#A700FF</color>
     <color name="colorButtonSecondaryTransparent">#99A700FF</color>
+    <color name="colorButtonInvalid">#33A700FF</color>
+
     <!--text-->
     <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextPrimaryTransparent">#CCFFFFFF</color>
+    <color name="colorTextPrimaryInvalid">#33FFFFFF</color>
     <color name="colorTextSecondary">#909099</color>
     <color name="colorTextSecondaryVariant">#014E47</color>
 </resources>

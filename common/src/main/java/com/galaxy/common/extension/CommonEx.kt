@@ -8,45 +8,48 @@ import android.util.DisplayMetrics
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 /**
  * Created by Liam.Zheng on 2020/10/16
  *
  * Des:
  */
-inline fun <reified T> Activity.start() {
-    this.startActivity(Intent(this, T::class.java))
+inline fun <reified T> Context.start(intent: Intent = Intent()) {
+    intent.setClass(this, T::class.java)
+    if (this !is Activity) intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    this.startActivity(intent)
 }
 
-fun Activity.isPortrait() =
-    this.resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+inline fun <reified F : Fragment> Context.newFragment(): F {
+    return if (this is FragmentActivity) {
+        supportFragmentManager.fragmentFactory.instantiate(this.classLoader, F::class.java.name) as F
+    } else {
+        Fragment.instantiate(this, F::class.java.name) as F
+    }
+}
 
-fun Fragment.isPortrait() =
-    resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+fun Activity.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-infix fun Activity.takeColor(colorId: Int) = ContextCompat.getColor(this, colorId)
-infix fun Fragment.takeColor(colorId: Int) = ContextCompat.getColor(requireContext(), colorId)
-infix fun Context.takeColor(colorId: Int) = ContextCompat.getColor(this, colorId)
+fun Fragment.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
+fun Context.takeColor(colorId: Int) = ContextCompat.getColor(this, colorId)
 
-val Context.displayMetrics: DisplayMetrics
-    get() = resources.displayMetrics
+fun Context.dpToPx(dp: Float) = (dp * resources.displayMetrics.density + 0.5).toInt()
 
-fun Context.dpToPx(dp: Float) = (dp * this.displayMetrics.density + 0.5).toInt()
-
-fun Context.pxToDp(px: Float) = (px / this.displayMetrics.density + 0.5).toInt()
+fun Context.pxToDp(px: Float) = (px / resources.displayMetrics.density + 0.5).toInt()
 
 fun Context.getScreenWidth(): Int = resources.displayMetrics.widthPixels
 
 fun Context.getScreenHeight(): Int = resources.displayMetrics.heightPixels
 
-fun Activity.getRealScreenWidth(): Int {
+fun Any.getRealScreenWidth(windowManager: WindowManager): Int {
     val dm = DisplayMetrics()
     windowManager.defaultDisplay.getMetrics(dm)
     return dm.widthPixels
 }
 
-fun getRealScreenHeight(windowManager: WindowManager): Int {
+fun Any.getRealScreenHeight(windowManager: WindowManager): Int {
     val dm = DisplayMetrics()
     windowManager.defaultDisplay.getRealMetrics(dm)
     return dm.heightPixels

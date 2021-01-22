@@ -8,26 +8,37 @@ import android.util.Log
  * Des:
  */
 
+fun getLogDebug(): Boolean {
+//    return BuildConfig.DEBUG
+    return true
+}
+
 fun Any.logv(content: String?) {
-    Log.v(this.javaClass.simpleName.toString(), content.toString())
+    if (getLogDebug())
+        Log.v(this.javaClass.simpleName, content.toString())
 }
 
 fun Any.logd(content: String?) {
-    Log.d(this.javaClass.simpleName.toString(), content.toString())
+    if (getLogDebug())
+        Log.d(this.javaClass.simpleName, content.toString())
 }
 
 fun Any.logi(content: String?) {
-    Log.i(this.javaClass.simpleName.toString(), content.toString())
+    if (getLogDebug())
+        Log.i(this.javaClass.simpleName, content.toString())
 }
 
 fun Any.logw(content: String?) {
-    Log.w(this.javaClass.simpleName.toString(), content.toString())
+    if (getLogDebug())
+        Log.w(this.javaClass.simpleName, content.toString())
 }
 
-fun Any.loge(content: String?) {
-    Log.e(this.javaClass.simpleName.toString(), content.toString())
+fun Any.loge(content: String?, tr: Throwable? = null) {
+    if (getLogDebug())
+        Log.e(this.javaClass.simpleName, content.toString(), tr)
 }
 
 fun Any.logwtf(content: String?) {
-    Log.wtf(this.javaClass.simpleName.toString(), content.toString())
+    if (getLogDebug())
+        Log.wtf(this.javaClass.simpleName, content.toString())
 }

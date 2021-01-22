@@ -29,10 +29,10 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        if (BuildConfig.DEBUG) {
-            Timber.plant(MultiTagTree().addTag("Timber"))
-        } else {
-            Timber.plant(ReleaseTree())
-        }
+//        if (BuildConfig.DEBUG) {
+//            Timber.plant(MultiTagTree().addTag("Timber"))
+//        } else {
+//            Timber.plant(ReleaseTree())
+//        }
     }
 }

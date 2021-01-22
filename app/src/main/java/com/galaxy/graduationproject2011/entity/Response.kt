@@ -5,13 +5,15 @@ package com.galaxy.graduationproject2011.entity
  *
  * Des:
  */
-class BaseResponse<Data> {
-    val code: Int = -1
-    val msg: String = ""
-    var data: Data? = null
+open class BaseResponse<Data> {
+    val code: Int? = null
+    val msg: String? = null
+    val data: Data? = null
+    fun isOk(): Boolean {
+        return code == 200
+    }
 }
 
-data class RandPwdResponse(val password: String)
-data class RandPortraitResponse(val imgurl: String)
-
+data class RandPwdResponse<Data>(val password: String) : BaseResponse<Data>()
+data class RandPortraitResponse<Data>(val imgurl: String) : BaseResponse<Data>()
 

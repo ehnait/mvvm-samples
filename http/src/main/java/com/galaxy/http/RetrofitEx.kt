@@ -32,9 +32,9 @@ fun <Response> CoroutineScope.request(
     }
 }
 
-inline fun <Service> Any.apiService(
+inline fun <Service> apiService(
     service: Class<Service>,
-    configuration: (Configuration.() -> Unit)
+    configuration: Configuration.() -> Unit
 ): Service {
     val finalConfiguration = Configuration().apply(configuration)
 

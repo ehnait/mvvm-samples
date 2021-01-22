@@ -13,10 +13,12 @@
     <color name="colorButtonPrimaryTransparent">#CC45C139</color>
     <color name="colorButtonSecondary">#D1FF45</color>
     <color name="colorButtonSecondaryTransparent">#CCD1FF45</color>
-    <color name="colorButtonInvalid">#E6C1C1C1</color>
+    <color name="colorButtonInvalid">#32D1FF45</color>
 
     <!--text-->
     <color name="colorTextPrimary">#000000</color>
+    <color name="colorTextPrimaryTransparent">#CC000000</color>
+    <color name="colorTextPrimaryInvalid">#33000000</color>
     <color name="colorTextSecondary">#838485</color>
     <color name="colorTextSecondaryVariant">#9C27B0</color>
     <color name="colorTextSecondaryVariantTransparent">#CC9C27B0</color>

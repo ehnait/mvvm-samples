@@ -36,7 +36,7 @@
             android:background="@drawable/selector_button_primary_bg"
             android:text="@string/login_with_otp"
             android:textAllCaps="false"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@drawable/selector_text_color_primary"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -47,7 +47,7 @@
             android:background="@drawable/selector_button_primary_bg"
             android:text="@string/login_with_password"
             android:textAllCaps="false"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@drawable/selector_text_color_primary"
             android:textStyle="bold" />
 
     </LinearLayout>
