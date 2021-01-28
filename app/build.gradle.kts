@@ -23,6 +23,9 @@ android {
         versionName = Releases.versionName
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters("armeabi-v7a", "arm64-v8a")
+        }
     }
 
     buildTypes {
@@ -37,7 +40,6 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
-
     signingConfigs {
         getByName("debug") {
             storeFile = file("../debug.keystore")
