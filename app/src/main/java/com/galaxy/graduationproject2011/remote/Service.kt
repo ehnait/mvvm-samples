@@ -3,7 +3,7 @@ package com.galaxy.graduationproject2011.remote
 import com.galaxy.graduationproject2011.BuildConfig
 import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.http.HeaderInterceptor
-import com.galaxy.http.apiService
+import com.galaxy.http.getApiService
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.HashMap
@@ -16,7 +16,7 @@ object Service {
     private const val WRITE_TIMEOUT = 30L
 
     val apiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-        apiService(ApiService::class.java) {
+        getApiService(ApiService::class.java) {
             okHttp {
                 it
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)

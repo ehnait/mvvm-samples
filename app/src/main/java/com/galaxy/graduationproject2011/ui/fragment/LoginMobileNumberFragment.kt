@@ -1,7 +1,6 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
 import android.os.CountDownTimer
-import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -9,6 +8,7 @@ import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
 import cn.smssdk.SMSSDK.*
 import com.galaxy.common.base.BaseFragment
+import com.galaxy.common.extension.isInternetOn
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
 import com.galaxy.common.extension.visible
@@ -17,10 +17,9 @@ import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.remote.Service
-import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
+import com.galaxy.graduationproject2011.ui.activity.LoginActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
-import com.galaxy.http.apiService
-import com.galaxy.http.request
+import com.galaxy.http.requestApi
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.coroutines.launch
@@ -32,15 +31,18 @@ import org.json.JSONObject
  *
  * Des:
  */
-class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_number) {
+class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
     var userName by PreferenceUtils(Constant.SP_UserName, "")
     private lateinit var eventhandler: EventHandler
     private lateinit var countDownTimer: CountDownTimer
 
-    override fun initView(view: View) {
+    override fun getlayoutId(): Int {
+        return R.layout.fragment_login_mobile_number
+    }
+    override fun initView() {
         tvTitle.text = getString(R.string.log_in)
         lifecycleScope.launch {
-            request({
+            requestApi({
                 Service.apiService.getRandPwd()
             }, {
                 if (it.isOk()) {
@@ -58,7 +60,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             findNavController().navigateUp()
         }
         tvSend.singleClick {
-            if (!(requireActivity() as AppBaseActivity).isInternetOn()) {
+            if (!requireActivity().isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -70,7 +72,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             }
         }
         tvAudio.singleClick {
-            if (!(requireActivity() as AppBaseActivity).isInternetOn()) {
+            if (!requireActivity().isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -97,6 +99,12 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
             cheackButtonState()
         }
     }
+
+    override fun initData() {
+        TODO("Not yet implemented")
+    }
+
+
 
     private fun cheackButtonState() {
         btnVerify.isEnabled = etPhone.text.isNotEmpty() && etCode.text.isNotEmpty()
@@ -131,7 +139,7 @@ class LoginMobileNumberFragment : BaseFragment(R.layout.fragment_login_mobile_nu
                             val phoneNumber = etPhone.text.toString().trim()
                             userName = phoneNumber
                             lifecycleScope.launch {
-                                request({
+                                requestApi({
                                     Service.apiService.getRandPwd()
                                 }, {
                                     if (it.isOk()) {

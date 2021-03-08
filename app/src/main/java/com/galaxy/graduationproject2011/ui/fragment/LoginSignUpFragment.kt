@@ -4,12 +4,13 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
+import com.galaxy.common.extension.isInternetOn
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
-import com.galaxy.graduationproject2011.ui.activity.AppBaseActivity
+import com.galaxy.graduationproject2011.ui.activity.LoginActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
 import kotlinx.android.synthetic.main.fragment_login_password.etPassword
 import kotlinx.android.synthetic.main.fragment_login_password.etUsername
@@ -22,11 +23,14 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  *
  * Des:
  */
-class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
+class LoginSignUpFragment : BaseFragment<LoginActivity>() {
     private var userNameSP by PreferenceUtils(Constant.SP_UserName, "")
     private var passWordSP by PreferenceUtils(Constant.SP_PassWord, "")
 
-    override fun initView(view: View) {
+    override fun getlayoutId(): Int {
+        return R.layout.fragment_sign_up
+    }
+    override fun initView() {
         tvTitle.text = getString(R.string.sign_up)
 
         ivBack.singleClick {
@@ -34,7 +38,7 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         }
 
         btnVerify.singleClick {
-            if (! (requireActivity() as AppBaseActivity).isInternetOn()) {
+            if (!requireActivity().isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -62,8 +66,12 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         etPasswordAgain.doAfterTextChanged {
             cheackButtonState()
         }
+    }
+
+    override fun initData() {
 
     }
+
 
     private fun cheackButtonState() {
         btnVerify.isEnabled =
@@ -74,4 +82,6 @@ class LoginSignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         @JvmStatic
         fun newInstance() = LoginSignUpFragment()
     }
+
+
 }

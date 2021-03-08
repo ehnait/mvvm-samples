@@ -3,6 +3,7 @@ package com.galaxy.graduationproject2011.ui.activity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.galaxy.common.base.BaseActivity
 import com.galaxy.graduationproject2011.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
@@ -13,11 +14,20 @@ import kotlinx.android.synthetic.main.activity_main.*
  *
  * Des:
  */
-class MainActivity : AppBaseActivity(R.layout.activity_main) {
+class MainActivity : BaseActivity() {
+
+    override fun getlayoutId(): Int {
+        return R.layout.activity_main
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         } // Else, need to wait for onRestoreInstanceState
+
+    }
+
+    override fun initData() {
 
     }
 

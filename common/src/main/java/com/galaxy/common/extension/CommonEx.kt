@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.util.DisplayMetrics
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
@@ -23,15 +25,20 @@ inline fun <reified T> Context.start(intent: Intent = Intent()) {
 
 inline fun <reified F : Fragment> Context.newFragment(): F {
     return if (this is FragmentActivity) {
-        supportFragmentManager.fragmentFactory.instantiate(this.classLoader, F::class.java.name) as F
+        supportFragmentManager.fragmentFactory.instantiate(
+            this.classLoader,
+            F::class.java.name
+        ) as F
     } else {
         Fragment.instantiate(this, F::class.java.name) as F
     }
 }
 
-fun Activity.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+fun Activity.isPortrait() =
+    resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
-fun Fragment.isPortrait() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
+fun Fragment.isPortrait() =
+    resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT
 
 fun Context.takeColor(colorId: Int) = ContextCompat.getColor(this, colorId)
 
@@ -53,4 +60,16 @@ fun Any.getRealScreenHeight(windowManager: WindowManager): Int {
     val dm = DisplayMetrics()
     windowManager.defaultDisplay.getRealMetrics(dm)
     return dm.heightPixels
+}
+
+
+fun Activity.isInternetOn(): Boolean {
+    val manager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    var networkInfo: NetworkInfo? = null
+    try {
+        networkInfo = manager.activeNetworkInfo
+    } catch (e: Exception) {
+
+    }
+    return networkInfo != null && networkInfo.isConnected
 }

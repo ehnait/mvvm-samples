@@ -1,6 +1,7 @@
 package com.galaxy.graduationproject2011.ui.activity
 
 import android.os.Bundle
+import com.galaxy.common.base.BaseActivity
 import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
@@ -11,8 +12,11 @@ import com.galaxy.graduationproject2011.entity.Constant
  *
  * Des:
  */
-class SplashActivity : AppBaseActivity(R.layout.activity_splash) {
+class SplashActivity : BaseActivity() {
     var userName by PreferenceUtils(Constant.SP_UserName, "")
+    override fun getlayoutId(): Int {
+        return R.layout.activity_splash
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         if (userName.isEmpty()) {
@@ -21,4 +25,10 @@ class SplashActivity : AppBaseActivity(R.layout.activity_splash) {
             start<MainActivity>()
         }
     }
+
+    override fun initData() {
+
+    }
+
+
 }

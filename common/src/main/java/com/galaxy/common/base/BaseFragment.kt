@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
  */
 
 abstract class BaseFragment<A : BaseActivity> : Fragment() {
-    protected abstract val layoutId: Int
+    protected abstract fun getlayoutId(): Int
     protected abstract fun initView()
     protected abstract fun initData()
 
@@ -40,8 +40,8 @@ abstract class BaseFragment<A : BaseActivity> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         isLoading = false
-        return if (layoutId > 0) {
-            inflater.inflate(layoutId, null).also { mRootView = it }
+        return if (getlayoutId() > 0) {
+            inflater.inflate(getlayoutId(), null).also { mRootView = it }
         } else {
             null
         }

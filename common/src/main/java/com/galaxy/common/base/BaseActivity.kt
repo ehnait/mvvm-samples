@@ -10,9 +10,12 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.galaxy.common.extension.singleClick
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 
-abstract class BaseActivity : AppCompatActivity() {
-    protected abstract val layoutId: Int
+abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+    protected abstract fun getlayoutId(): Int
     protected abstract fun initView(savedInstanceState: Bundle?)
     protected abstract fun initData()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +30,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     private fun initLayout() {
-        if (layoutId > 0) {
-            setContentView(layoutId)
+        if (getlayoutId() > 0) {
+            setContentView(getlayoutId())
             initSoftKeyboard()
         }
 
@@ -51,6 +54,11 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun finish() {
         hideSoftKeyboard()
         super.finish()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancel()
     }
 
     /**

@@ -10,7 +10,7 @@ import retrofit2.Retrofit
  * Des:
  */
 
-fun <Response> CoroutineScope.request(
+fun <Response> CoroutineScope.requestApi(
     callBlock: suspend () -> Response,
     onSuccess: ((Response) -> Unit)? = null,
     onThrowable: ((Throwable) -> Unit)? = null,
@@ -32,21 +32,22 @@ fun <Response> CoroutineScope.request(
     }
 }
 
-inline fun <Service> apiService(
+inline fun <Service> getApiService(
     service: Class<Service>,
     configuration: Configuration.() -> Unit
 ): Service {
-    val finalConfiguration = Configuration().apply(configuration)
+    val retrofitConfiguration = Configuration().apply(configuration)
 
-    val finalOkHttpBuilder = finalConfiguration.buidOkHttp?.invoke(OkHttpClient.Builder())
-        ?: OkHttpClient.Builder()
+    val finalOkHttpBuilder =
+        retrofitConfiguration.buidOkHttp?.invoke(OkHttpClient.Builder()) ?: OkHttpClient.Builder()
 
-    val finalRetrofitBuilder = finalConfiguration.buidRetrofit?.invoke(Retrofit.Builder())
-        ?: Retrofit.Builder()
+    val finalRetrofitBuilder =
+        retrofitConfiguration.buidRetrofit?.invoke(Retrofit.Builder()) ?: Retrofit.Builder()
             .client(finalOkHttpBuilder.build())
 
     return finalRetrofitBuilder.build().create(service)
 }
+
 
 class Configuration {
     var buidOkHttp: ((OkHttpClient.Builder) -> OkHttpClient.Builder)? = null
