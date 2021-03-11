@@ -17,7 +17,6 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-
     }
 
     override fun initData() {

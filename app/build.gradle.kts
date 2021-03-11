@@ -90,6 +90,7 @@ dependencies {
     //project
     implementation(project(Modules.common))
     implementation(project(Modules.http))
+    implementation(project(Modules.umeng))
 
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 }

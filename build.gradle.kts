@@ -27,6 +27,9 @@ allprojects {
         maven {
             setUrl("https://jitpack.io")
         }
+        maven {
+            setUrl("https://dl.bintray.com/umsdk/release")
+        }
     }
 }
 tasks.register("clean", Delete::class) {
