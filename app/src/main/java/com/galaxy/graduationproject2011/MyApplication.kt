@@ -3,6 +3,7 @@ package com.galaxy.graduationproject2011
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.hjq.umeng.UmengClient
 
 /**
  * Created by Liam.Zheng on 2020/9/23
@@ -26,5 +27,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        // 友盟统计、登录、分享 SDK
+        UmengClient.init(instance)
     }
 }

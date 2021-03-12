@@ -1,5 +1,6 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.showShortToast
@@ -60,6 +61,11 @@ class LoginHostFragment : BaseFragment<LoginActivity>(), UmengLogin.OnLoginListe
         UmengClient.login(requireActivity(), platform, this)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // 友盟登录回调
+        UmengClient.onActivityResult(requireActivity(), requestCode, resultCode, data)
+    }
     override fun onSucceed(platform: Platform?, data: UmengLogin.LoginData?) {
         showShortToast("昵称：${data?.name}  性别：${data?.sex}")
         showShortToast("id：${data?.id}")

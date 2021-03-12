@@ -28,7 +28,6 @@ android {
         }
     }
 
-    // APK 签名的那些事：https://www.jianshu.com/p/a1f8e5896aa2
     signingConfigs {
         getByName("debug") {
             storeFile = file("../debug.keystore")
@@ -38,10 +37,10 @@ android {
         }
 
         create("release") {
-            storeFile = file("../debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+            storeFile = file(properties["KeyStoreFile"].toString())
+            storePassword = properties["KeyStorePass"].toString()
+            keyAlias = properties["KeyStoreAlias"].toString()
+            keyPassword = properties["KeyStorePass"].toString()
         }
     }
 
@@ -52,7 +51,7 @@ android {
             isMinifyEnabled = false
             isShrinkResources = false
             isZipAlignEnabled = false
-//            applicationIdSuffix = ".debug"
+            applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("debug")
         }
 
@@ -62,7 +61,10 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             isZipAlignEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = signingConfigs.getByName("release")
         }
     }
