@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">graduationProject2011</string>
+    <string name="app_name">graduation</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="login_with_otp">Login With OTP</string>

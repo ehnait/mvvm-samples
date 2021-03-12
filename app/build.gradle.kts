@@ -28,28 +28,42 @@ android {
         }
     }
 
-    buildTypes {
-        getByName("debug") {
-            applicationIdSuffix = ".debug"
-            signingConfig = signingConfigs.getByName("debug")
-        }
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
+    // APK 签名的那些事：https://www.jianshu.com/p/a1f8e5896aa2
     signingConfigs {
         getByName("debug") {
             storeFile = file("../debug.keystore")
-//            storePassword = findProperty("KeyStorePass").toString()
-//            keyAlias = findProperty("KeyStoreAlias").toString()
-//            keyPassword = findProperty("KeyStorePass").toString()
-
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
+        }
+
+        create("release") {
+            storeFile = file("../debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
+    buildTypes {
+        getByName("debug") {
+            isDebuggable = true
+            isJniDebuggable = true
+            isMinifyEnabled = false
+            isShrinkResources = false
+            isZipAlignEnabled = false
+//            applicationIdSuffix = ".debug"
+            signingConfig = signingConfigs.getByName("debug")
+        }
+
+        getByName("release") {
+            isDebuggable = false
+            isJniDebuggable = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            isZipAlignEnabled = true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
@@ -58,6 +72,15 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    android.applicationVariants.all {
+        outputs.all {
+            if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
+                this.outputFileName = "graduation@app_$versionName.apk"
+
+            }
+        }
     }
 
 }
@@ -94,3 +117,4 @@ dependencies {
 
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 }
+
