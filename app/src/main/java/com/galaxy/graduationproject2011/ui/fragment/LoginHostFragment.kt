@@ -41,7 +41,7 @@ class LoginHostFragment : BaseFragment<LoginActivity>(), UmengLogin.OnLoginListe
             if (UmengClient.isAppInstalled(this.requireContext(), Platform.QQ)) {
                 loginUmengClient(Platform.QQ)
             } else {
-                showShortToast("当前设备没有安装QQ")
+                showShortToast(getString(R.string.qq_is_not_installed_on_the_current_device))
             }
         }
 
@@ -49,7 +49,7 @@ class LoginHostFragment : BaseFragment<LoginActivity>(), UmengLogin.OnLoginListe
             if (UmengClient.isAppInstalled(this.requireContext(), Platform.WECHAT)) {
                 loginUmengClient(Platform.WECHAT)
             } else {
-                showShortToast("当前设备没有安装微信")
+                showShortToast(getString(R.string.wechat_is_not_installed_on_the_current_device))
             }
         }
     }
@@ -66,6 +66,7 @@ class LoginHostFragment : BaseFragment<LoginActivity>(), UmengLogin.OnLoginListe
         // 友盟登录回调
         UmengClient.onActivityResult(requireActivity(), requestCode, resultCode, data)
     }
+
     override fun onSucceed(platform: Platform?, data: UmengLogin.LoginData?) {
         showShortToast("昵称：${data?.name}  性别：${data?.sex}")
         showShortToast("id：${data?.id}")
@@ -73,11 +74,11 @@ class LoginHostFragment : BaseFragment<LoginActivity>(), UmengLogin.OnLoginListe
     }
 
     override fun onError(platform: Platform?, t: Throwable?) {
-        showShortToast("第三方登录出错：${t?.message}")
+        showShortToast("${getString(R.string.third_party_login_error)}：${t?.message}")
     }
 
     override fun onCancel(platform: Platform?) {
-        showShortToast("取消第三方登录：")
+        showShortToast(getString(R.string.third_party_login_cancel))
     }
 
 }

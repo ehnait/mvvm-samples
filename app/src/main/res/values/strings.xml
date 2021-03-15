@@ -5,6 +5,11 @@
     <string name="login_with_otp">Login With OTP</string>
     <string name="login_with_password">Login With PassWord</string>
     <string name="login_to_n_graduation_project">Login to \n Graduation Project</string>
+    <string name="qq_is_not_installed_on_the_current_device">QQ is not installed on the current device</string>
+    <string name="wechat_is_not_installed_on_the_current_device">WeChat is not installed on the current device</string>
+    <string name="third_party_login_error">Third party login error</string>
+    <string name="third_party_login_cancel">Third party login cancel</string>
+
 
     <string name="enter_your_phone_number">Enter Your Phone Number</string>
     <string name="enter_your_phone_otp">Enter Your Phone OTP</string>
@@ -28,5 +33,6 @@
     <string name="username_cannot_be_empty">Username cannot be empty ！</string>
     <string name="the_password_is_incorrect">The password is incorrect ！</string>
     <string name="create_new_account">CREATE NEW ACCOUNT</string>
+
 
 </resources>

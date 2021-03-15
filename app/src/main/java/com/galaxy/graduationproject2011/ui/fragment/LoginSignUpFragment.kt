@@ -2,20 +2,26 @@ package com.galaxy.graduationproject2011.ui.fragment
 
 import android.view.View
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.isInternetOn
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
+import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.ui.activity.LoginActivity
+import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
 import kotlinx.android.synthetic.main.fragment_login_password.etPassword
 import kotlinx.android.synthetic.main.fragment_login_password.etUsername
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 /**
@@ -55,7 +61,12 @@ class LoginSignUpFragment : BaseFragment<LoginActivity>() {
             }
             userNameSP = username
             passWordSP = password
-            findNavController().navigateUp()
+            Thread.sleep(1000)
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                delay(1500)
+                findNavController().navigateUp()
+            }
         }
         etUsername.doAfterTextChanged {
             cheackButtonState()

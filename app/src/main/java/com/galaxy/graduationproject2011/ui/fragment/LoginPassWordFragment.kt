@@ -1,6 +1,7 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.isInternetOn
@@ -15,6 +16,9 @@ import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
 import kotlinx.android.synthetic.main.fragment_login_password.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 /**
@@ -48,7 +52,10 @@ class LoginPassWordFragment : BaseFragment<LoginActivity>() {
             val username = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
             if (userNameSP == username && passWordSP == password) {
-                requireActivity().start<MainActivity>()
+                lifecycleScope.launch(Dispatchers.IO) {
+                    delay(1500)
+                    requireActivity().start<MainActivity>()
+                }
             } else {
                 showShortToast(getString(R.string.the_password_is_incorrect))
             }
