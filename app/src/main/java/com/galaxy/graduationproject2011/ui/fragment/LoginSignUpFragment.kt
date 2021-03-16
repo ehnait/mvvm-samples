@@ -70,7 +70,6 @@ class LoginSignUpFragment : BaseFragment<LoginActivity>() {
                     AppDatabase.getInstance(requireContext()).userDao().also {
                         val user = User(userName = username, userPassword = password)
                         it.insertAll(user)
-                        PreferenceUtils(Constant.SP_USER_NAME, username)
                     }
                 }
                 delay(1500)

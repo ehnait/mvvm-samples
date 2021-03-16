@@ -3,6 +3,8 @@ package com.galaxy.graduationproject2011
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.galaxy.common.utils.PreferenceUtils
+import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.room.AppDatabase
 import com.hjq.umeng.UmengClient
 
@@ -13,6 +15,8 @@ import com.hjq.umeng.UmengClient
  */
 
 class MyApplication : Application() {
+    var spUserName by PreferenceUtils(Constant.SP_USER_NAME, "")
+
     companion object {
         private const val TAG = "MyApplication"
 

@@ -12,6 +12,7 @@ import com.galaxy.common.base.BaseFragment
 import com.galaxy.common.extension.*
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
+import com.galaxy.graduationproject2011.MyApplication
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.remote.Service
@@ -153,7 +154,7 @@ class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
                                 userPassword = apiResponse.body()?.password
                             )
                             it.insertAll(user)
-                            PreferenceUtils(Constant.SP_USER_NAME, phoneNumber)
+                            MyApplication.instance.spUserName=phoneNumber
                         }
                         success = true
                     }

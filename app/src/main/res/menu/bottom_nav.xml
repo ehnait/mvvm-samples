@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/home"
-        android:contentDescription="cd_home"
-        android:icon="@android:drawable/ic_dialog_map"
-        android:title="1" />
+        android:contentDescription="home"
+        android:icon="@drawable/selector_nav_home"
+        android:title="home" />
 
     <item
         android:id="@+id/list"
-        android:contentDescription="cd_list"
-        android:icon="@android:drawable/ic_dialog_alert"
-        android:title="2" />
+        android:contentDescription="news"
+        android:icon="@drawable/selector_nav_news"
+        android:title="news" />
 
     <item
         android:id="@+id/form"
-        android:contentDescription="cd_form"
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title="3" />
+        android:contentDescription="user"
+        android:icon="@drawable/selector_nav_user"
+        android:title="user" />
 
 </menu>
 

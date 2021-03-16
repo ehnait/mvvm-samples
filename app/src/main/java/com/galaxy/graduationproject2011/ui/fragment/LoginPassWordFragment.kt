@@ -50,26 +50,27 @@ class LoginPassWordFragment : BaseFragment<LoginActivity>() {
             }
             val username = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
-                lifecycleScope.launch {
-                    val result = withContext(Dispatchers.IO) {
-                        var resultFlag = false
-                        AppDatabase.getInstance(requireContext()).userDao().getAll().forEach {
-                            if (username == it.userName && password == it.userPassword) {
-                                resultFlag = true
-                                return@forEach
-                            }
+            lifecycleScope.launch {
+                val result = withContext(Dispatchers.IO) {
+                    var resultFlag = false
+                    AppDatabase.getInstance(requireContext()).userDao().getAll().forEach {
+                        if (username == it.userName && password == it.userPassword) {
+                            resultFlag = true
+                            return@forEach
                         }
-                        resultFlag
                     }
-
-                    if (result) {
-                        delay(1500)
-                        requireActivity().start<MainActivity>()
-                        requireActivity().finish()
-                    } else {
-                        showShortToast(getString(R.string.the_password_is_incorrect))
-                    }
+                    resultFlag
                 }
+
+                if (result) {
+                    MyApplication.instance.spUserName = username
+                    delay(1500)
+                    requireActivity().start<MainActivity>()
+                    requireActivity().finish()
+                } else {
+                    showShortToast(getString(R.string.the_password_is_incorrect))
+                }
+            }
 
         }
         etUsername.doAfterTextChanged {

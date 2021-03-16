@@ -6,6 +6,7 @@ import com.galaxy.common.base.BaseActivity
 import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
+import com.galaxy.graduationproject2011.MyApplication
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,6 @@ import kotlinx.coroutines.withContext
  */
 class SplashActivity : BaseActivity() {
     private var firstStart by PreferenceUtils(Constant.SP_FIRST_START, true)
-    private val spUserName by PreferenceUtils(Constant.SP_USER_NAME, "")
     override fun getlayoutId(): Int {
         return R.layout.activity_splash
     }
@@ -32,7 +32,7 @@ class SplashActivity : BaseActivity() {
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
                 delay(1500)
-                if (spUserName.isEmpty()) {
+                if (MyApplication.instance.spUserName.isEmpty()) {
                     start<LoginActivity>()
                 } else {
                     start<MainActivity>()
