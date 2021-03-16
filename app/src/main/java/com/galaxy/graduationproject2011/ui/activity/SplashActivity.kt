@@ -37,9 +37,9 @@ class SplashActivity : BaseActivity() {
                 } else {
                     start<MainActivity>()
                 }
+                finish()
             }
         }
-
     }
 
     override fun initData() {

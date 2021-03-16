@@ -9,7 +9,6 @@
         <!-- 应用的强调色，CheckBox RadioButton Switch 等一般控件的选中效果默认采用该颜色 -->
         <item name="colorAccent">@color/colorAccent</item>
 
-
         <!-- 窗口背景颜色 -->
         <item name="android:windowBackground">@color/colorWindowBackground</item>
         <!-- ActionMode 覆盖 Actionbar 不被顶下来 -->
