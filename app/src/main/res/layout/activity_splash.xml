@@ -7,9 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.SplashActivity">
 
-    <TextView
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="welcome" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/welcome" />
 </RelativeLayout>
