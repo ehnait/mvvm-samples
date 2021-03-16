@@ -1,6 +1,5 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
-import android.view.View
 import com.galaxy.common.base.BaseFragment
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
@@ -10,20 +9,20 @@ import com.galaxy.graduationproject2011.ui.activity.MainActivity
  *
  * Des:
  */
-class Home3Fragment : BaseFragment<MainActivity>() {
+class NewsFragment : BaseFragment<MainActivity>() {
 
-    override fun getlayoutId(): Int {
-        return R.layout.fragment_home3
+    companion object {
+        @JvmStatic
+        fun newInstance() = NewsFragment()
     }
+
     override fun initView() {
     }
 
     override fun initData() {
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = Home3Fragment()
+    override fun getlayoutId(): Int {
+        return R.layout.fragment_news
     }
 }
-

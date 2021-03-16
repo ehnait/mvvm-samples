@@ -43,6 +43,7 @@ class MainActivity : BaseActivity() {
      * Called on first creation and when restoring state.
      */
     private fun setupBottomNavigationBar() {
+        navigation.itemIconTintList = null
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
