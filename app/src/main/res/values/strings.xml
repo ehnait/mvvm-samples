@@ -30,6 +30,7 @@
     <string name="please_enter_the_correct_phone_number">Please enter the correct phone number</string>
     <string name="can_t_receive_otp_try_audio_verify">Can\'t receive OTP? Try Audio verify.</string>
     <string name="inconsistent_passwords">Inconsistent passwords ！</string>
+    <string name="the_length_of_the_password_is_at_least_6">The length of the password is at least 6</string>
     <string name="username_cannot_be_empty">Username cannot be empty ！</string>
     <string name="the_password_is_incorrect">The password is incorrect ！</string>
     <string name="create_new_account">CREATE NEW ACCOUNT</string>

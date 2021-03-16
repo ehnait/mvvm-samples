@@ -25,7 +25,8 @@ object Versions {
     const val coroutinesVersion = "1.3.9"
 
     const val appCompatVersion = "1.2.0"
-    const val lifecycleVersion = "2.2.0"
+    const val lifecycleVersion = "2.3.0"
+    const val roomVersion = "2.2.6"
     const val multidexVersion = "2.0.1"
     const val coreKtxVersion = "1.3.1"
     const val constraintLayoutVersion = "2.0.1"
@@ -54,13 +55,17 @@ object AndroidLibraries {
     const val lifecycleViewModel =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleVersion}"   //ViewModel
     const val lifecycleViewModelSavedstate =
-        "androidx.lifecycle:lifecycle-viewmodel-savedstate:$${Versions.lifecycleVersion}"     // Saved state module for ViewModel
+        "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycleVersion}"     // Saved state module for ViewModel
     const val lifecycleCommonJava8 =
-        "androidx.lifecycle:lifecycle-common-java8:$${Versions.lifecycleVersion}"     // Annotation processor for Java8
+        "androidx.lifecycle:lifecycle-common-java8:${Versions.lifecycleVersion}"     // Annotation processor for Java8
     const val lifecycleService =
-        "androidx.lifecycle:lifecycle-service:$${Versions.lifecycleVersion}"  // optional - helpers for implementing LifecycleOwner in a Service
+        "androidx.lifecycle:lifecycle-service:${Versions.lifecycleVersion}"  // optional - helpers for implementing LifecycleOwner in a Service
     const val lifecycleProcess =
-        "androidx.lifecycle:lifecycle-process:$${Versions.lifecycleVersion}"  // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+        "androidx.lifecycle:lifecycle-process:${Versions.lifecycleVersion}"  // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    const val lifecycleRoomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+    const val lifecycleRoomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
+    const val lifecycleRoomkKtx =
+        "androidx.room:room-ktx:${Versions.roomVersion}" // optional - Kotlin Extensions and Coroutines support for Room
 
     const val multidex = "androidx.multidex:multidex:${Versions.multidexVersion}"
     const val constraintLayout =

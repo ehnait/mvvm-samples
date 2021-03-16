@@ -9,16 +9,17 @@ import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.singleClick
 import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
+import com.galaxy.graduationproject2011.MyApplication
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
+import com.galaxy.graduationproject2011.room.AppDatabase
+import com.galaxy.graduationproject2011.room.User
 import com.galaxy.graduationproject2011.ui.activity.LoginActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
 import kotlinx.android.synthetic.main.fragment_login_password.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 /**
@@ -27,8 +28,6 @@ import kotlinx.coroutines.launch
  * Des:
  */
 class LoginPassWordFragment : BaseFragment<LoginActivity>() {
-    private val userNameSP by PreferenceUtils(Constant.SP_UserName, "")
-    private val passWordSP by PreferenceUtils(Constant.SP_PassWord, "")
 
     override fun getlayoutId(): Int {
         return R.layout.fragment_login_password
@@ -51,14 +50,26 @@ class LoginPassWordFragment : BaseFragment<LoginActivity>() {
             }
             val username = etUsername.text.toString().trim()
             val password = etPassword.text.toString().trim()
-            if (userNameSP == username && passWordSP == password) {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    delay(1500)
-                    requireActivity().start<MainActivity>()
+                lifecycleScope.launch {
+                    val result = withContext(Dispatchers.IO) {
+                        var resultFlag = false
+                        AppDatabase.getInstance(requireContext()).userDao().getAll().forEach {
+                            if (username == it.userName && password == it.userPassword) {
+                                resultFlag = true
+                                return@forEach
+                            }
+                        }
+                        resultFlag
+                    }
+
+                    if (result) {
+                        delay(1500)
+                        requireActivity().start<MainActivity>()
+                    } else {
+                        showShortToast(getString(R.string.the_password_is_incorrect))
+                    }
                 }
-            } else {
-                showShortToast(getString(R.string.the_password_is_incorrect))
-            }
+
         }
         etUsername.doAfterTextChanged {
             cheackButtonState()

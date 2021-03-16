@@ -12,6 +12,8 @@ import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
+import com.galaxy.graduationproject2011.room.AppDatabase
+import com.galaxy.graduationproject2011.room.User
 import com.galaxy.graduationproject2011.ui.activity.LoginActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.btnVerify
@@ -22,6 +24,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -30,13 +33,12 @@ import kotlinx.coroutines.launch
  * Des:
  */
 class LoginSignUpFragment : BaseFragment<LoginActivity>() {
-    private var userNameSP by PreferenceUtils(Constant.SP_UserName, "")
-    private var passWordSP by PreferenceUtils(Constant.SP_PassWord, "")
-
     override fun getlayoutId(): Int {
         return R.layout.fragment_sign_up
     }
+
     override fun initView() {
+
         tvTitle.text = getString(R.string.sign_up)
 
         ivBack.singleClick {
@@ -55,18 +57,26 @@ class LoginSignUpFragment : BaseFragment<LoginActivity>() {
                 showShortToast(getString(R.string.username_cannot_be_empty))
                 return@singleClick
             }
+            if (password.length < 6) {
+                showShortToast(getString(R.string.the_length_of_the_password_is_at_least_6))
+                return@singleClick
+            }
             if (password != passwordAgain) {
                 showShortToast(getString(R.string.inconsistent_passwords))
                 return@singleClick
             }
-            userNameSP = username
-            passWordSP = password
-            Thread.sleep(1000)
-
-            lifecycleScope.launch(Dispatchers.IO) {
+            lifecycleScope.launch {
+                withContext(Dispatchers.IO) {
+                    AppDatabase.getInstance(requireContext()).userDao().also {
+                        val user = User(userName = username, userPassword = password)
+                        it.insertAll(user)
+                        PreferenceUtils(Constant.SP_USER_NAME, username)
+                    }
+                }
                 delay(1500)
                 findNavController().navigateUp()
             }
+
         }
         etUsername.doAfterTextChanged {
             cheackButtonState()

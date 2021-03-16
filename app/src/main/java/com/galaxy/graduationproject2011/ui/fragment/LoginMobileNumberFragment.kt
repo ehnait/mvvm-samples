@@ -1,5 +1,6 @@
 package com.galaxy.graduationproject2011.ui.fragment
 
+import android.content.Context
 import android.os.CountDownTimer
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
@@ -8,21 +9,20 @@ import cn.smssdk.EventHandler
 import cn.smssdk.SMSSDK
 import cn.smssdk.SMSSDK.*
 import com.galaxy.common.base.BaseFragment
-import com.galaxy.common.extension.isInternetOn
-import com.galaxy.common.extension.showShortToast
-import com.galaxy.common.extension.singleClick
-import com.galaxy.common.extension.visible
+import com.galaxy.common.extension.*
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.common.utils.RegUtils
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.entity.Constant
 import com.galaxy.graduationproject2011.remote.Service
+import com.galaxy.graduationproject2011.room.AppDatabase
+import com.galaxy.graduationproject2011.room.User
 import com.galaxy.graduationproject2011.ui.activity.LoginActivity
 import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import com.galaxy.http.requestApi
 import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.json.JSONObject
 
 
@@ -32,28 +32,15 @@ import org.json.JSONObject
  * Des:
  */
 class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
-    var userName by PreferenceUtils(Constant.SP_UserName, "")
     private lateinit var eventhandler: EventHandler
     private lateinit var countDownTimer: CountDownTimer
 
     override fun getlayoutId(): Int {
         return R.layout.fragment_login_mobile_number
     }
+
     override fun initView() {
         tvTitle.text = getString(R.string.log_in)
-        lifecycleScope.launch {
-            requestApi({
-                Service.apiService.getRandPwd()
-            }, {
-                if (it.isOk()) {
-                    showShortToast(it.password)
-                } else {
-                    showShortToast(it.code.toString())
-                }
-            }, {
-
-            })
-        }
         initCountDown()
         initSMSSDK()
         ivBack.singleClick {
@@ -84,7 +71,7 @@ class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
             }
         }
         btnVerify.singleClick {
-            if (!(requireActivity() as MainActivity).isInternetOn()) {
+            if (!requireActivity().isInternetOn()) {
                 showShortToast(getString(R.string.the_network_not_connected))
                 return@singleClick
             }
@@ -101,9 +88,8 @@ class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
     }
 
     override fun initData() {
-        TODO("Not yet implemented")
-    }
 
+    }
 
 
     private fun cheackButtonState() {
@@ -136,20 +122,12 @@ class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
                             }
                         }
                         EVENT_SUBMIT_VERIFICATION_CODE -> {//提交验证码成功
-                            val phoneNumber = etPhone.text.toString().trim()
-                            userName = phoneNumber
                             lifecycleScope.launch {
-                                requestApi({
-                                    Service.apiService.getRandPwd()
-                                }, {
-                                    if (it.isOk()) {
-                                        showShortToast(it.password)
-                                    } else {
-                                        showShortToast(it.code.toString())
-                                    }
-                                }, {
-
-                                })
+                                val phoneNumber = etPhone.text.toString().trim()
+                                if (getRandPwd(phoneNumber)) {
+                                    requireActivity().start<MainActivity>()
+                                    requireActivity().finish()
+                                }
                             }
                         }
                     }
@@ -160,6 +138,34 @@ class LoginMobileNumberFragment : BaseFragment<LoginActivity>() {
         }
         registerEventHandler(eventhandler)
     }
+
+
+    private suspend fun getRandPwd(phoneNumber: String): Boolean {
+        var success = false
+        withContext(Dispatchers.IO) {
+            try {
+                withTimeout(4000) {
+                    val apiResponse = Service.apiService.getRandPwd()
+                    if (200 == apiResponse.code() && null != apiResponse.body()) {
+                        AppDatabase.getInstance(requireContext()).userDao().also {
+                            val user = User(
+                                userName = phoneNumber,
+                                userPassword = apiResponse.body()?.password
+                            )
+                            it.insertAll(user)
+                            PreferenceUtils(Constant.SP_USER_NAME, phoneNumber)
+                        }
+                        success = true
+                    }
+
+                }
+            } catch (sww: Throwable) {
+                success = false
+            }
+        }
+        return success
+    }
+
 
     private fun processError(data: Any) {
         try {

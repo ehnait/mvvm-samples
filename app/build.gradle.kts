@@ -30,10 +30,10 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            storeFile = file("../debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
+            storeFile = file(properties["KeyStoreFile"].toString())
+            storePassword = properties["KeyStorePass"].toString()
+            keyAlias = properties["KeyStoreAlias"].toString()
+            keyPassword = properties["KeyStorePass"].toString()
         }
 
         create("release") {
@@ -102,6 +102,9 @@ dependencies {
     implementation(AndroidLibraries.lifecycleRuntime)
     implementation(AndroidLibraries.lifecycleLiveData)
     implementation(AndroidLibraries.lifecycleViewModel)
+    implementation(AndroidLibraries.lifecycleRoomRuntime)
+    kapt(AndroidLibraries.lifecycleRoomCompiler)
+    implementation(AndroidLibraries.lifecycleRoomkKtx)
     implementation(AndroidLibraries.multidex)
     implementation(AndroidLibraries.constraintLayout)
     implementation(AndroidLibraries.recyclerView)

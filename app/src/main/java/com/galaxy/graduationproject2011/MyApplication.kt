@@ -3,6 +3,7 @@ package com.galaxy.graduationproject2011
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.galaxy.graduationproject2011.room.AppDatabase
 import com.hjq.umeng.UmengClient
 
 /**
@@ -30,4 +31,5 @@ class MyApplication : Application() {
         // 友盟统计、登录、分享 SDK
         UmengClient.init(instance)
     }
+
 }

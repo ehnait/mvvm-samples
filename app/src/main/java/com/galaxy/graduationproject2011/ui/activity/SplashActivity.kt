@@ -2,6 +2,7 @@ package com.galaxy.graduationproject2011.ui.activity
 
 import android.os.Bundle
 import com.galaxy.common.base.BaseActivity
+import com.galaxy.common.extension.showShortToast
 import com.galaxy.common.extension.start
 import com.galaxy.common.utils.PreferenceUtils
 import com.galaxy.graduationproject2011.R
@@ -13,13 +14,19 @@ import com.galaxy.graduationproject2011.entity.Constant
  * Des:
  */
 class SplashActivity : BaseActivity() {
-    var userName by PreferenceUtils(Constant.SP_UserName, "")
+    private var firstStart by PreferenceUtils(Constant.SP_FIRST_START, true)
+    private val spUserName by PreferenceUtils(Constant.SP_USER_NAME, "")
     override fun getlayoutId(): Int {
         return R.layout.activity_splash
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-        if (userName.isEmpty()) {
+        if (firstStart) {
+            showShortToast("firstStart-firstStart-firstStart")
+        } else {
+
+        }
+        if (spUserName.isEmpty()) {
             start<LoginActivity>()
         } else {
             start<MainActivity>()
@@ -28,6 +35,11 @@ class SplashActivity : BaseActivity() {
 
     override fun initData() {
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        firstStart = false
     }
 
 
