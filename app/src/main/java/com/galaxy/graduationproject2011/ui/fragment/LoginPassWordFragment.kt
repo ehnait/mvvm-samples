@@ -65,6 +65,7 @@ class LoginPassWordFragment : BaseFragment<LoginActivity>() {
                     if (result) {
                         delay(1500)
                         requireActivity().start<MainActivity>()
+                        requireActivity().finish()
                     } else {
                         showShortToast(getString(R.string.the_password_is_incorrect))
                     }
