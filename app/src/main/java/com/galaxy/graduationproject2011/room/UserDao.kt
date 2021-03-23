@@ -11,7 +11,7 @@ interface UserDao {
     suspend fun loadAllByIds(userIds: IntArray): List<User>
 
 
-    @Query("select * from user where user_name IN (:userName)")
+    @Query("select * from user where userName IN (:userName)")
     suspend fun findByName(userName: String): User
 
     @Query("delete from User")
