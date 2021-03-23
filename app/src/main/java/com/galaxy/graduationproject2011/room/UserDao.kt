@@ -15,16 +15,16 @@ interface UserDao {
     suspend fun findByName(userName: String): User
 
     @Query("delete from User")
-    fun deleteAllUser()
+    suspend fun deleteAllUser()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(vararg users: User)
+    suspend fun insertAll(vararg users: User)
 
     @Update
-    fun update(user: User)
+    suspend fun update(user: User)
 
     @Delete
-    fun delete(user: User)
+    suspend fun delete(user: User)
 
 
 }

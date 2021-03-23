@@ -15,5 +15,5 @@ open class BaseResponse<Data> {
 }
 
 data class RandPwdResponse<Data>(val password: String) : BaseResponse<Data>()
-data class RandPortraitResponse<Data>(val imgurl: String) : BaseResponse<Data>()
+data class RandPortraitResponse<Data>(val pic_url: String) : BaseResponse<Data>()
 

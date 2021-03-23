@@ -1,13 +1,25 @@
 package com.galaxy.graduationproject2011.ui.activity
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.galaxy.common.base.BaseActivity
+import com.galaxy.common.extension.start
+import com.galaxy.graduationproject2011.MyApplication
 import com.galaxy.graduationproject2011.R
+import com.galaxy.graduationproject2011.remote.Service
+import com.galaxy.graduationproject2011.room.AppDatabase
+import com.galaxy.graduationproject2011.room.User
+import com.galaxy.http.requestApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeout
 
 /**
  * Created by Liam.Zheng on 2020/10/16
@@ -28,7 +40,22 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initData() {
-
+        lifecycleScope.launch {
+            val dao = AppDatabase.getInstance(this@MainActivity).userDao()
+            val user = dao.findByName(MyApplication.instance.spUserName)
+            if (user.portrait.isNullOrEmpty()) {
+                requestApi({
+                    Service.apiService.getRandPortrait()
+                }, {
+                    if (it.isOk()) {
+                        user.portrait = it.pic_url
+                        launch(Dispatchers.IO) {
+                            dao.update(user)
+                        }
+                    }
+                })
+            }
+        }
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
