@@ -36,7 +36,7 @@ class SplashActivity : BaseActivity() {
 
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                delay(15000)
+                delay(1500)
                 if (MyApplication.instance.spUserName.isEmpty()) {
                     start<LoginActivity>()
                 } else {
