@@ -43,12 +43,12 @@ class MainActivity : BaseActivity() {
         lifecycleScope.launch {
             val dao = AppDatabase.getInstance(this@MainActivity).userDao()
             val user = dao.findByName(MyApplication.instance.spUserName)
-            if (user.portrait.isNullOrEmpty()) {
+            if (user.userPortrai.isNullOrEmpty()) {
                 requestApi({
                     Service.apiService.getRandPortrait()
                 }, {
                     if (it.isOk()) {
-                        user.portrait = it.pic_url
+                        user.userPortrai = it.pic_url
                         launch(Dispatchers.IO) {
                             dao.update(user)
                         }
