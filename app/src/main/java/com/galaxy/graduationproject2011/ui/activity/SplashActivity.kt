@@ -26,12 +26,17 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+
+    }
+
+    override fun initData() {
         if (firstStart) {
             showShortToast("FIRST START")
         }
+
         lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                delay(1500)
+                delay(15000)
                 if (MyApplication.instance.spUserName.isEmpty()) {
                     start<LoginActivity>()
                 } else {
@@ -40,10 +45,6 @@ class SplashActivity : BaseActivity() {
                 finish()
             }
         }
-    }
-
-    override fun initData() {
-
     }
 
     override fun onDestroy() {
