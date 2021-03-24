@@ -40,6 +40,7 @@ object Versions {
     const val coilVersion = "1.0.0-rc3"
     const val lottieVersion = "3.5.0"
     const val BaseRecyclerViewAdapterHelperVersion = "3.0.6"
+    const val GSYVideoPlayer = "8.1.1"
 
 }
 
@@ -103,4 +104,6 @@ object OtherLibraries {
     const val lottie = "com.airbnb.android:lottie:${Versions.lottieVersion}"
     const val BaseRecyclerViewAdapterHelper =
         "com.github.CymChad:BaseRecyclerViewAdapterHelper:${Versions.BaseRecyclerViewAdapterHelperVersion}"
+    const val GSYVideoPlayer =
+        "com.shuyu:GSYVideoPlayer:${Versions.GSYVideoPlayer}"
 }
