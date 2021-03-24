@@ -2,6 +2,8 @@
     <string name="app_name">seiya</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
+    <string name="logout">Log out</string>
+
     <string name="login_with_otp">Login With OTP</string>
     <string name="login_with_password">Login With PassWord</string>
     <string name="login_to_n_graduation_project">Login to \n Graduation Project</string>
@@ -35,5 +37,7 @@
     <string name="the_password_is_incorrect">The password is incorrect ！</string>
     <string name="create_new_account">CREATE NEW ACCOUNT</string>
 
+    <string name="avatar">Avatar</string>
+    <string name="nickname">NickName</string>
 
 </resources>

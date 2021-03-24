@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorWindowBackground"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:paddingBottom="12dp"
     tools:context=".ui.adapter.VideoAdapter">
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginBottom="14dp"
         android:gravity="center"
         android:textColor="@color/colorTextPrimary"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         tools:text="title" />
 

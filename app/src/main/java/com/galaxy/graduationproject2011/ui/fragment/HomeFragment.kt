@@ -35,9 +35,8 @@ class HomeFragment : BaseFragment<MainActivity>() {
 
     override fun initView() {
         listNormalAdapter = VideoAdapter()
-        video_list.layoutManager = LinearLayoutManager(requireContext())
         video_list.adapter = listNormalAdapter
-
+        video_list.layoutManager = LinearLayoutManager(requireContext())
         video_list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
