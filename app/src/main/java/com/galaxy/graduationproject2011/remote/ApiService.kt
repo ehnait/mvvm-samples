@@ -17,10 +17,10 @@ interface ApiService {
     @GET("api/Video/video_type")
     suspend fun getVideo(
         @Query("type") type: String = "0",
-        @Query("page") page: String = "20", ): BaseResponse<VideoResponse>
+        @Query("page") page: String = "20", ): BaseResponse<VideoList>
 
     @GET("api/News/new_list")
     suspend fun getNews(
         @Query("type") type: String = "0",
-        @Query("page") page: String = "20", ): BaseResponse<NewsResponse>
+        @Query("page") page: String = "20", ): BaseResponse<NewsList>
 }

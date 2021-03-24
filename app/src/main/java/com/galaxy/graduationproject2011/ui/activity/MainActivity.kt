@@ -5,21 +5,15 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.galaxy.common.base.BaseActivity
-import com.galaxy.common.extension.start
 import com.galaxy.graduationproject2011.MyApplication
 import com.galaxy.graduationproject2011.R
 import com.galaxy.graduationproject2011.remote.Service
 import com.galaxy.graduationproject2011.room.AppDatabase
-import com.galaxy.graduationproject2011.room.User
 import com.galaxy.http.requestApi
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.Gson
+import com.shuyu.gsyvideoplayer.GSYVideoManager
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_login_mobile_number.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeout
 
 /**
  * Created by Liam.Zheng on 2020/10/16
@@ -77,4 +71,25 @@ class MainActivity : BaseActivity() {
         NavigationUI.setupWithNavController(navigation, navController)
     }
 
+    override fun onBackPressed() {
+        if (GSYVideoManager.backFromWindowFull(this)) {
+            return;
+        }
+        super.onBackPressed()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        GSYVideoManager.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        GSYVideoManager.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        GSYVideoManager.releaseAllVideos()
+    }
 }

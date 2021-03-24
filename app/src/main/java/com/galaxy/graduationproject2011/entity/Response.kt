@@ -21,7 +21,7 @@ data class RandPwdResponse<Data>(val password: String) : BaseResponse<Data>()
 @Keep
 data class RandPortraitResponse<Data>(val pic_url: String) : BaseResponse<Data>()
 @Keep
-class VideoResponse : ArrayList<VideoResponse.VideoItem>(){
+class VideoList : ArrayList<VideoList.VideoItem>(){
     @Keep
     data class VideoItem(
         val cover: String? = null, // http://vimg3.ws.126.net/image/snapshot/2017/5/J/F/VCKOETEJF.jpg
@@ -62,7 +62,7 @@ class VideoResponse : ArrayList<VideoResponse.VideoItem>(){
     }
 }
 @Keep
-class NewsResponse : ArrayList<NewsResponse.NewsItem>(){
+class NewsList : ArrayList<NewsList.NewsItem>(){
     @Keep
     data class NewsItem(
         val alias: String? = null, // Military
