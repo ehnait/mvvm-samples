@@ -10,7 +10,7 @@ import com.galaxy.graduationproject2011.ui.activity.MainActivity
 import com.galaxy.graduationproject2011.ui.adapter.VideoAdapter
 import com.galaxy.http.requestApi
 import com.shuyu.gsyvideoplayer.GSYVideoManager
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_video.*
 import kotlinx.coroutines.launch
 
 
@@ -29,7 +29,7 @@ class VideoFragment : BaseFragment<MainActivity>() {
     }
 
     override fun getlayoutId(): Int {
-        return R.layout.fragment_home
+        return R.layout.fragment_video
     }
 
 
