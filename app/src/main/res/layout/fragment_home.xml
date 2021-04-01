@@ -4,7 +4,7 @@
     android:id="@+id/activity_list_video"
     android:layout_width="match_parent"
     android:paddingHorizontal="18dp"
-    tools:context=".ui.fragment.HomeFragment"
+    tools:context=".ui.fragment.VideoFragment"
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView

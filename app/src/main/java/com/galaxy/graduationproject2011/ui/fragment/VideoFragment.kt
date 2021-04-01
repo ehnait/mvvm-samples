@@ -19,13 +19,13 @@ import kotlinx.coroutines.launch
  *
  * Des:
  */
-class HomeFragment : BaseFragment<MainActivity>() {
+class VideoFragment : BaseFragment<MainActivity>() {
 
     private var listNormalAdapter: VideoAdapter? = null
 
     companion object {
         @JvmStatic
-        fun newInstance() = HomeFragment()
+        fun newInstance() = VideoFragment()
     }
 
     override fun getlayoutId(): Int {
