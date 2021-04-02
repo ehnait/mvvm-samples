@@ -38,5 +38,5 @@ dependencies {
     // Http
     api(OtherLibraries.retrofit)
     api(OtherLibraries.retrofitGsonConverter)
-    api(OtherLibraries.httpLoggingInterceptor)
+    api(OtherLibraries.loggingInterceptor)
 }

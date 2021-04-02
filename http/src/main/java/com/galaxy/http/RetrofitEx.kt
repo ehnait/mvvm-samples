@@ -38,26 +38,25 @@ inline fun <Service> getApiService(
 ): Service {
     val retrofitConfiguration = Configuration().apply(configuration)
 
-    val finalOkHttpBuilder =
-        retrofitConfiguration.buidOkHttp?.invoke(OkHttpClient.Builder()) ?: OkHttpClient.Builder()
+    val finalOkHttpClient = (retrofitConfiguration.buidOkHttpClient?.invoke(OkHttpClient.Builder())
+        ?: OkHttpClient.Builder()).build()
 
-    val finalRetrofitBuilder =
-        retrofitConfiguration.buidRetrofit?.invoke(Retrofit.Builder()) ?: Retrofit.Builder()
-            .client(finalOkHttpBuilder.build())
-
-    return finalRetrofitBuilder.build().create(service)
+    val finalRetrofit =
+        (retrofitConfiguration.buidRetrofit?.invoke(Retrofit.Builder())
+            ?: Retrofit.Builder()).client(finalOkHttpClient).build()
+    return finalRetrofit.create(service)
 }
 
 
 class Configuration {
-    var buidOkHttp: ((OkHttpClient.Builder) -> OkHttpClient.Builder)? = null
+    var buidOkHttpClient: ((OkHttpClient.Builder) -> OkHttpClient.Builder)? = null
     var buidRetrofit: ((Retrofit.Builder) -> Retrofit.Builder)? = null
 
-    fun okHttp(builder: (OkHttpClient.Builder) -> OkHttpClient.Builder) {
-        this.buidOkHttp = builder
+    fun okHttpClientBuilder(builder: (OkHttpClient.Builder) -> OkHttpClient.Builder) {
+        this.buidOkHttpClient = builder
     }
 
-    fun retrofit(builder: (Retrofit.Builder) -> Retrofit.Builder) {
+    fun retrofitBuilder(builder: (Retrofit.Builder) -> Retrofit.Builder) {
         this.buidRetrofit = builder
     }
 }

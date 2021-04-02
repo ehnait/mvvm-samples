@@ -36,7 +36,7 @@ object Versions {
 
     const val retrofitVersion = "2.9.0"
     const val gsonVersion = "2.8.5"
-    const val okHttpVersion = "3.14.9"
+    const val loggingInterceptorVersion = "3.1.0"
     const val coilVersion = "1.1.1"
     const val lottieVersion = "3.5.0"
     const val BaseRecyclerViewAdapterHelperVersion = "3.0.6"
@@ -96,8 +96,8 @@ object OtherLibraries {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
     const val retrofitGsonConverter =
         "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
-    const val httpLoggingInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVersion}"
+    const val loggingInterceptor =
+        "com.github.ihsanbal:LoggingInterceptor:${Versions.loggingInterceptorVersion}"
 
     // COIL https://github.com/coil-kt/coil
     const val coil = "io.coil-kt:coil:${Versions.coilVersion}"
