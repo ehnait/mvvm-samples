@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">fastAndroid</string>
+    <string name="app_name">FastAndroid</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="logout">Log out</string>
