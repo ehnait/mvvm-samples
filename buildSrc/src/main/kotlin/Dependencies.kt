@@ -1,5 +1,5 @@
 object ApplicationId {
-    val id = "com.galaxy.graduationproject2011"
+    val id = "com.he.android"
 }
 
 object Modules {
