@@ -1,4 +1,4 @@
-rootProject.name = "graduationProject2011"
+rootProject.name = "FastAndroid"
 include(":app", ":common", ":http")
 include(":umeng")
 
