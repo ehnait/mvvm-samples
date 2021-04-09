@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:开屏页;
+if (check token) then (true)
+else (false)
+ :登录页面;
+ split
+   if (三方登录) then (yes)
+   else(no)
+    stop
+   endif
+ split again
+     if (手机号登录) then (yes)
+       else(no)
+        stop
+       endif
+ split again
+    if (账号密码登录) then (yes)
+           else(no)
+            stop
+           endif
+ end split
+
+endif
+
+ :主页面;
+    split
+    :视频;
+ split again
+    :新闻资讯;
+ split again
+    :个人中心;
+ if (退出登录) then (yes)
+    stop
+     else
+    endif
+ end split
+
+
+
+@enduml
