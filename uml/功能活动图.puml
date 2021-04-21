@@ -2,22 +2,22 @@
 'https://plantuml.com/activity-diagram-beta
 
 start
-:开屏页;
+:SplahActivity;
 if (check token) then (true)
 else (false)
- :登录页面;
+ :LoginHost;
  split
-   if (三方登录) then (yes)
+   if (login with third party) then (yes)
    else(no)
     stop
    endif
  split again
-     if (手机号登录) then (yes)
+     if (login with phone number) then (yes)
        else(no)
         stop
        endif
  split again
-    if (账号密码登录) then (yes)
+    if (login with password) then (yes)
            else(no)
             stop
            endif
@@ -25,19 +25,18 @@ else (false)
 
 endif
 
- :主页面;
+ :MainActivity;
     split
-    :视频;
+    :Video;
  split again
-    :新闻资讯;
+    :News;
  split again
-    :个人中心;
- if (退出登录) then (yes)
+    :User;
+ if (Logout) then (yes)
     stop
      else
     endif
  end split
-
 
 
 @enduml
