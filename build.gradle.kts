@@ -14,7 +14,7 @@ buildscript {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}")
         // MobSDK
         classpath("com.mob.sdk:MobSDK:+")
-
+        classpath("com.qihoo360.replugin:replugin-host-gradle:2.3.4")
     }
 
 }

@@ -6,12 +6,14 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("com.mob.sdk")
+    id("replugin-host-gradle")
 }
 MobSDK {
     appKey(findProperty("MobSDK_Key").toString())
     appSecret(findProperty("MobSDK_Secret").toString())
     SMSSDK { }
 }
+
 
 android {
     compileSdkVersion(Versions.compileSdk)
@@ -124,6 +126,22 @@ dependencies {
     implementation(project(Modules.http))
     implementation(project(Modules.umeng))
 
+    api ("com.qihoo360.replugin:replugin-host-lib:2.3.4")
 //    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 }
 
+repluginHostConfig{
+    /**
+     * 是否使用 AppCompat 库
+     * 不需要个性化配置时，无需添加
+     */
+    useAppCompat = true
+    /**
+     * 背景不透明的坑的数量
+     * 不需要个性化配置时，无需添加
+     */
+    countNotTranslucentStandard = 6
+    countNotTranslucentSingleTop = 2
+    countNotTranslucentSingleTask = 3
+    countNotTranslucentSingleInstance = 2
+}

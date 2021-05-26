@@ -6,6 +6,7 @@ import androidx.multidex.MultiDex
 import com.he.common.utils.PreferenceUtils
 import com.he.fastandroid.entity.Constant
 import com.hjq.umeng.UmengClient
+import com.qihoo360.replugin.RePluginApplication
 
 /**
  * Created by Liam.Zheng on 2020/9/23
@@ -13,7 +14,7 @@ import com.hjq.umeng.UmengClient
  * Des:
  */
 
-class MyApplication : Application() {
+class MyApplication : RePluginApplication() {
     var spUserName by PreferenceUtils(Constant.SP_USER_NAME, "")
 
     companion object {
