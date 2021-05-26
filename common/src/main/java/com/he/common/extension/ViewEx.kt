@@ -1,13 +1,17 @@
 package com.he.common.extension
 
+import android.graphics.Outline
 import android.graphics.PorterDuff
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.Checkable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.Px
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 
 /**
@@ -95,4 +99,20 @@ fun TextView.rightIcon(drawableId: Int) {
             ContextCompat.getDrawable(context, drawableId),
             null
     )
+}
+
+/**
+ * 设置view圆角
+ *
+ * @param radius
+ * @return
+ */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+fun View.setViewRound(radius: Float) {
+    this.outlineProvider = object : ViewOutlineProvider() {
+        override fun getOutline(view: View, outline: Outline) {
+            outline.setRoundRect(0, 0, view.width, view.height, radius)
+        }
+    }
+    this.clipToOutline = true
 }
