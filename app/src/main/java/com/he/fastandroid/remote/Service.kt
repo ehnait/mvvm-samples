@@ -3,7 +3,7 @@ package com.he.fastandroid.remote
 import android.util.Log.VERBOSE
 import com.he.fastandroid.BuildConfig
 import com.he.http.HeaderInterceptor
-import com.he.http.getApiService
+import com.he.http.createApiService
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,7 +19,7 @@ object Service {
     private const val WRITE_TIMEOUT = 30L
 
     val apiService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-        getApiService(ApiService::class.java) {
+        createApiService(ApiService::class.java) {
             okHttpClientBuilder {
                 it
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
@@ -47,7 +47,7 @@ object Service {
         }
     }
     val apiServiceV2 by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-        getApiService(ApiService::class.java) {
+        createApiService(ApiService::class.java) {
             okHttpClientBuilder {
                 it
                     .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)

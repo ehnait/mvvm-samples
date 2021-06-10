@@ -4,11 +4,34 @@ import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
+
 /**
  * Created by Liam.Zheng on 2021/1/13
  *
  * Des:
  */
+
+fun <Response> CoroutineScope.requestDownloadApi(
+    callBlock: suspend () -> Response,
+    onSuccess: ((Response) -> Unit)? = null,
+    onThrowable: ((Throwable) -> Unit)? = null,
+    onFinally: (() -> Unit)? = null
+) {
+    val handler = CoroutineExceptionHandler { _, exception ->
+        onThrowable?.invoke(exception)
+    }
+    launch(context = Dispatchers.Main + handler) {
+        try {
+            onSuccess?.invoke(withContext(Dispatchers.IO) {
+                callBlock.invoke()
+            })
+        } catch (exception: Throwable) {
+            onThrowable?.invoke(exception)
+        } finally {
+            onFinally?.invoke()
+        }
+    }
+}
 
 fun <Response> CoroutineScope.requestApi(
     callBlock: suspend () -> Response,
@@ -32,7 +55,7 @@ fun <Response> CoroutineScope.requestApi(
     }
 }
 
-inline fun <Service> getApiService(
+inline fun <Service> createApiService(
     service: Class<Service>,
     configuration: Configuration.() -> Unit
 ): Service {
