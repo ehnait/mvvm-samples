@@ -8,6 +8,7 @@ import com.he.common.extension.start
 import com.he.fastandroid.MyApplication
 import com.he.fastandroid.R
 import com.he.fastandroid.room.AppDatabase
+import com.he.fastandroid.ui.activity.DownloadActivity
 import com.he.fastandroid.ui.activity.MainActivity
 import com.he.fastandroid.ui.activity.SplashActivity
 import kotlinx.android.synthetic.main.fragment_user.*
@@ -34,6 +35,9 @@ class UserFragment : BaseFragment<MainActivity>() {
             if (user.userName.isNullOrEmpty().not()) {
                 tv_name.text = user.userName
             }
+        }
+        tv_download.singleClick {
+            context?.start<DownloadActivity>()
         }
         btn_logout.singleClick {
             MyApplication.instance.spUserName = ""

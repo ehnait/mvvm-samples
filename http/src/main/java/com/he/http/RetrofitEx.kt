@@ -17,20 +17,8 @@ fun <Response> CoroutineScope.requestDownloadApi(
     onThrowable: ((Throwable) -> Unit)? = null,
     onFinally: (() -> Unit)? = null
 ) {
-    val handler = CoroutineExceptionHandler { _, exception ->
-        onThrowable?.invoke(exception)
-    }
-    launch(context = Dispatchers.Main + handler) {
-        try {
-            onSuccess?.invoke(withContext(Dispatchers.IO) {
-                callBlock.invoke()
-            })
-        } catch (exception: Throwable) {
-            onThrowable?.invoke(exception)
-        } finally {
-            onFinally?.invoke()
-        }
-    }
+
+
 }
 
 fun <Response> CoroutineScope.requestApi(

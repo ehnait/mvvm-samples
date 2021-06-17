@@ -39,5 +39,6 @@
 
     <string name="avatar">Avatar</string>
     <string name="nickname">NickName</string>
+    <string name="download">Download</string>
 
 </resources>
