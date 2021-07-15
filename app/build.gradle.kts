@@ -75,6 +75,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
 
     android.applicationVariants.all {
         outputs.all {
