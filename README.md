@@ -5,8 +5,8 @@
     <br/>
 - ## AS常用插件（plugins）
   
-  ++ [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
-  + [Android Drawable Preview](https://plugins.jetbrains.com/plugin/10730-android-drawable-preview)
+  - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
+  - [Android Drawable Preview](https://plugins.jetbrains.com/plugin/10730-android-drawable-preview)
   - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
   - [BugKotlinDocument](https://plugins.jetbrains.com/plugin/9781-bugkotlindocument)
   - [JSON To Kotlin Class](https://plugins.jetbrains.com/plugin/9960-json-to-kotlin-class-jsontokotlinclass-)
@@ -20,6 +20,9 @@
     <br/>
 - ## 包结构
   > ![structure](https://github.com/tianhe-github/FastAndroid/blob/master/image/package_structure.png)
-            
+
+- ## 预览
+  > ![gif_20210803_141405](https://github.com/tianhe-github/FastAndroid/blob/master/image/gif_20210803_141405.gif)
+                
 
 
