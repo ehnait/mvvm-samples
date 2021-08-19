@@ -4,9 +4,9 @@
 
     <br/>
 - ## AS常用插件（plugins）
-
-  > [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
-  > [Android Drawable Preview](https://plugins.jetbrains.com/plugin/10730-android-drawable-preview)
+  
+  1. [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
+  2. [Android Drawable Preview](https://plugins.jetbrains.com/plugin/10730-android-drawable-preview)
   > [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
   > [BugKotlinDocument](https://plugins.jetbrains.com/plugin/9781-bugkotlindocument)
   > [JSON To Kotlin Class](https://plugins.jetbrains.com/plugin/9960-json-to-kotlin-class-jsontokotlinclass-)
