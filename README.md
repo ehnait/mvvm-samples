@@ -5,17 +5,17 @@
     <br/>
 - ## AS常用插件（plugins）
   
-  - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
+  --- [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
   - [Android Drawable Preview](https://plugins.jetbrains.com/plugin/10730-android-drawable-preview)
-  > [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
-  > [BugKotlinDocument](https://plugins.jetbrains.com/plugin/9781-bugkotlindocument)
-  > [JSON To Kotlin Class](https://plugins.jetbrains.com/plugin/9960-json-to-kotlin-class-jsontokotlinclass-)
-  > [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
-  > [LeetCode Editor](https://plugins.jetbrains.com/plugin/12132-leetcode-editor)
-  > [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
-  > [Chinese ​(Simplified)​ Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----)
-  > [PlantUML integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
-  > [Markdown](https://plugins.jetbrains.com/plugin/7793-markdown)
+  - [ADB Idea](https://plugins.jetbrains.com/plugin/7380-adb-idea)
+  - [BugKotlinDocument](https://plugins.jetbrains.com/plugin/9781-bugkotlindocument)
+  - [JSON To Kotlin Class](https://plugins.jetbrains.com/plugin/9960-json-to-kotlin-class-jsontokotlinclass-)
+  - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)
+  - [LeetCode Editor](https://plugins.jetbrains.com/plugin/12132-leetcode-editor)
+  - [Translation](https://plugins.jetbrains.com/plugin/8579-translation)
+  - [Chinese ​(Simplified)​ Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----)
+  - [PlantUML integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
+  - [Markdown](https://plugins.jetbrains.com/plugin/7793-markdown)
 
     <br/>
 - ## 包结构
