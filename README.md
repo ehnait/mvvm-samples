@@ -20,7 +20,8 @@
     <br/>
 - ## 包结构
   > ![structure](https://github.com/tianhe-github/FastAndroid/blob/master/image/package_structure.png)
-
+ 
+    <br/>
 - ## 预览
   > ![gif_20210803_141405](https://github.com/tianhe-github/FastAndroid/blob/master/image/gif_20210803_141405.gif)
                 
