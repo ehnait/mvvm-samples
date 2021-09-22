@@ -16,6 +16,8 @@
   - [Chinese ​(Simplified)​ Language Pack](https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----)
   - [PlantUML integration](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
   - [Markdown](https://plugins.jetbrains.com/plugin/7793-markdown)
+  - [GitToolBox](https://plugins.jetbrains.com/plugin/7499-gittoolbox)
+  - [Git Commit Template](https://plugins.jetbrains.com/plugin/9861-git-commit-template)
 
     <br/>
 - ## 包结构
