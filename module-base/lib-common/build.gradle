@@ -1,0 +1,101 @@
+import dependencies.*
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'com.example.lib_common'
+
+    compileSdk Versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8 //VERSION_11
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+
+    configurations.all {
+        /*
+        *<https://www.jianshu.com/p/289354394328/>
+        *./gradlew build --refresh-dependencies
+        */
+        resolutionStrategy.cacheChangingModulesFor 24, 'hours'
+        resolutionStrategy.cacheDynamicVersionsFor 10 * 60, 'seconds'
+    }
+}
+
+dependencies {
+//    api project(path: 'navigation:lib-navannotation')
+
+    testImplementation Deps.Test.testJunit
+    androidTestImplementation Deps.Test.androidTestEspresso
+    androidTestImplementation Deps.Test.androidTestJunit
+
+    api Deps.Kotlin.kotlinx_coroutines_android
+
+    api Deps.Jetpack.appcompat
+    api Deps.Jetpack.core_ktx
+    api Deps.Jetpack.lifecycle_livedata_ktx
+    api Deps.Jetpack.lifecycle_viewmodel_ktx
+    api Deps.Jetpack.navigation_ui_ktx
+    api Deps.Jetpack.navigation_fragment_ktx
+    implementation Deps.Jetpack.hilt_android
+    kapt Deps.Jetpack.hilt_compiler
+    api Deps.Jetpack.startup
+    api Deps.Jetpack.material
+    api Deps.Jetpack.constraintlayout
+    api Deps.Jetpack.swiperefreshlayout
+    api Deps.Jetpack.paging
+    api Deps.Jetpack.room_ktx
+    kapt Deps.Jetpack.room_compiler
+    api Deps.Jetpack.work_runtime_ktx
+    api Deps.Jetpack.browser
+
+    api Deps.GitHub.retrofit
+    api Deps.GitHub.retrofit_converter_gson
+    api Deps.GitHub.okhttp_logging_interceptor
+    //api Deps.GitHub.persistentCookieJar
+    api Deps.GitHub.fresco
+    api Deps.GitHub.mmkv
+    api Deps.GitHub.timber
+
+
+    //放app去
+    api Deps.GitHub.permissionx
+    api Deps.GitHub.lottie
+    api Deps.GitHub.multiStateView
+    //api Deps.GitHub.autoSize
+    //api Deps.GitHub.ycWebView
+    // api Deps.GitHub.baseRecyclerViewAdapterHelper
+    // api Deps.GitHub.material_dialogs_core
+    //api Deps.GitHub.material_dialogs_input
+    // api Deps.GitHub.smartrefreshlayout
+    //api Deps.GitHub.statusBarUtil
+    // api Deps.GitHub.photoView
+}

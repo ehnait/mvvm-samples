@@ -1,0 +1,26 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        //华为maven
+        maven {
+            url "http://developer.huawei.com/repo/"
+            allowInsecureProtocol = true
+        }
+
+        maven { url "https://jitpack.io" }
+
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "TestApp"
+include ':app'
+include ':module-base:lib-common'
+

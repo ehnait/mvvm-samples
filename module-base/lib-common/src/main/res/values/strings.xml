@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="socket_timeout_exception">SocketTimeoutException</string>
+    <string name="connect_exception">ConnectException</string>
+    <string name="http_exception">HttpException - %1$s </string>
+    <string name="json_exception">JSONException </string>
+    <string name="illegal_argument_exception">IllegalArgumentException</string>
+    <string name="unknown_host_exception">UnknownHostException</string>
+    <string name="unknown_exception">UnknownException</string>
+</resources>
