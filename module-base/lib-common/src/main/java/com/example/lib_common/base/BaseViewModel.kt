@@ -3,9 +3,7 @@ package com.example.lib_common.base
 import androidx.lifecycle.ViewModel
 import com.example.lib_common.di.DefaultDispatcher
 import com.example.lib_common.di.IoDispatcher
-import com.example.lib_common.ext.application
-import com.example.lib_common.ext.toast
-import com.example.lib_common.http.romote.CatchException
+import com.example.lib_common.http.romote.parseApiException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.*
@@ -53,9 +51,7 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
             _uiState.emit(UiState.Content)
         }.catch { it: Throwable ->
             _uiState.emit(UiState.Error)
-            CatchException(it).parse()?.let {
-                application.toast(it)
-            }
+            it.parseApiException()
         }
     }
 }

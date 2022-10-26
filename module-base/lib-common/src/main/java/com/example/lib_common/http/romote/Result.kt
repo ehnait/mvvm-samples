@@ -4,12 +4,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 sealed class Result<out R> {
     data class Success<out T>(val data: T) : Result<T>()
-    data class Failure(val error: BizException) : Result<Nothing>()
+    data class Failure(val code: Int, val message: String) : Result<Nothing>()
 
     override fun toString(): String {
         return when (this) {
             is Success<*> -> "Success[data=$data]"
-            is Failure -> "Error[throwable=${error}]"
+            is Failure -> "Error[throwable=$code--$message]"
 
         }
     }
