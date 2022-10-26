@@ -90,7 +90,7 @@ suspend fun <T : Any> BaseResponse<T>.toResult(
             Result.Success(data)
         } else {
             errorStart?.invoke(this)
-            Result.Error(BizException(code, message))
+            Result.Failure(BizException(code, message))
         }
     }
 }
